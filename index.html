@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LOACON | Servicio Técnico de Línea Blanca</title>
+
+    <meta name="description" content="LOACON - Servicio técnico, mantenimiento y reparación de línea blanca.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ffffff;
+            color: #102a43;
+        }
+
+        /* ===== HEADER ===== */
+
+        header {
+            width: 100%;
+            height: 78px;
+            background: #ffffff;
+            border-bottom: 1px solid #d9e0e7;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #1261a0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #123b63;
+        }
+
+        .logo-text span {
+            color: #8c98a4;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #263f56;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: #1261a0;
+        }
+
+        .btn-header {
+            background: #1261a0;
+            color: white;
+            padding: 13px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* ===== HERO ===== */
+
+        .hero {
+            min-height: 570px;
+            background:
+                linear-gradient(90deg,
+                    #ffffff 0%,
+                    #ffffff 43%,
+                    rgba(255,255,255,0.7) 55%,
+                    rgba(255,255,255,0) 75%
+                ),
+                linear-gradient(135deg, #eef3f7, #dce5ec);
+
+            display: flex;
+            align-items: center;
+            padding: 70px 7%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 620px;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            line-height: 1.05;
+            color: #123b63;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: #1261a0;
+        }
+
+        .hero p {
+            font-size: 22px;
+            line-height: 1.5;
+            color: #40566b;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #1261a0;
+            color: white;
+            padding: 16px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .btn-secondary {
+            border: 2px solid #1261a0;
+            color: #1261a0;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            background: white;
+        }
+
+        /* ===== SERVICIOS ===== */
+
+        .section {
+            padding: 70px 7%;
+        }
+
+        .section-title {
+            font-size: 40px;
+            color: #123b63;
+            margin-bottom: 12px;
+        }
+
+        .section-title span {
+            color: #1261a0;
+        }
+
+        .section-subtitle {
+            color: #65788a;
+            font-size: 17px;
+            margin-bottom: 35px;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .service-card {
+            background: #ffffff;
+            border: 1px solid #dbe2e8;
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(18, 59, 99, 0.12);
+        }
+
+        .service-icon {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            background: #e9f2fa;
+            color: #1261a0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .service-card h3 {
+            color: #123b63;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: #718191;
+            line-height: 1.5;
+        }
+
+        /* ===== FOOTER ===== */
+
+        footer {
+            background: #123b63;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+
+        @media (max-width: 900px) {
+
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .services {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 0 20px;
+            }
+
+            .logo-text {
+                font-size: 22px;
+            }
+
+            .btn-header {
+                display: none;
+            }
+
+            .hero {
+                padding: 55px 25px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .section {
+                padding: 50px 25px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .services {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+            <div class="logo-icon">L</div>
+
+            <div class="logo-text">
+                LOAC<span>ON</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+
+        <a href="#contacto" class="btn-header">
+            Solicitar servicio
+        </a>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="inicio">
+
+        <div class="hero-content">
+
+            <h1>
+                Tu línea blanca
+                <span>en buenas manos</span>
+            </h1>
+
+            <p>
+                Mantenimiento, reparación e instalación
+                de electrodomésticos a domicilio.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#contacto" class="btn-primary">
+                    Solicitar servicio
+                </a>
+
+                <a href="tel:+525500000000" class="btn-secondary">
+                    Llamar ahora
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SERVICIOS -->
+
+    <section class="section" id="servicios">
+
+        <h2 class="section-title">
+            Nuestros <span>servicios</span>
+        </h2>
+
+        <p class="section-subtitle">
+            Soluciones profesionales para el mantenimiento y reparación de tus equipos.
+        </p>
+
+        <div class="services">
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    ❄
+                </div>
+
+                <h3>Refrigeradores</h3>
+
+                <p>
+                    Diagnóstico, reparación y mantenimiento.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    ◉
+                </div>
+
+                <h3>Lavadoras</h3>
+
+                <p>
+                    Reparación y mantenimiento preventivo.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    ◌
+                </div>
+
+                <h3>Secadoras</h3>
+
+                <p>
+                    Diagnóstico y reparación de fallas.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    🔧
+                </div>
+
+                <h3>Estufas y hornos</h3>
+
+                <p>
+                    Servicio técnico especializado.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 LOACON — Servicio Técnico de Línea Blanca
+        </p>
+
+    </footer>
+
+
+</body>
+</html>
