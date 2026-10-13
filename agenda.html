@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Agenda tu cita | LOACON</title>
+
+    <link rel="stylesheet" href="css/agenda.css">
+</head>
+
+<body>
+
+     <!-- BOTÓN REGRESAR -->
+    <a href="index.html" class="btn-regresar">
+        ← Volver al inicio
+    </a>
+
+    <!-- FONDO DINÁMICO LOACON -->
+<div class="dynamic-background" aria-hidden="true">
+
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+
+    <div class="bg-grid"></div>
+
+    <div class="bg-line bg-line-1"></div>
+    <div class="bg-line bg-line-2"></div>
+
+    <div class="bg-dots bg-dots-1"></div>
+    <div class="bg-dots bg-dots-2"></div>
+    <div class="bg-dots bg-dots-3"></div>
+
+</div>
+
+    <main class="agenda-container">
+
+        <!-- ENCABEZADO -->
+        <div class="agenda-top">
+
+    <img
+        src="imagenes/logo-loacon.png"
+        alt="LOACON"
+        class="agenda-logo"
+    >
+
+    <section class="agenda-header">
+
+        <div class="agenda-header-content">
+
+            <h1>Agenda tu cita</h1>
+
+            <p>
+                Programa el servicio de mantenimiento,
+                reparación o instalación de tu electrodoméstico.
+            </p>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <section class="agenda-content">
+
+
+            <!-- CALENDARIO -->
+            <div class="calendar-section">
+
+                <h2>📅 Selecciona una fecha</h2>
+
+                <p class="section-description">
+                    Elige el día que prefieras para recibir nuestro servicio.
+                </p>
+
+                <div class="calendar">
+
+                    <div class="calendar-header">
+
+                        <button id="prevMonth">‹</button>
+
+                        <h3 id="monthYear"></h3>
+
+                        <button id="nextMonth">›</button>
+
+                    </div>
+
+
+                    <div class="weekdays">
+
+                        <span>Lun</span>
+                        <span>Mar</span>
+                        <span>Mié</span>
+                        <span>Jue</span>
+                        <span>Vie</span>
+                        <span>Sáb</span>
+                        <span>Dom</span>
+
+                    </div>
+
+
+                    <div id="calendarDays" class="calendar-days"></div>
+
+                </div>
+
+
+        <!-- HORARIOS -->
+
+        <div class="schedule-section">
+
+            <h2>🕐 Selecciona un horario</h2>
+
+            <select id="horario" class="time-select" required>
+
+                <option value="">
+                    Selecciona una hora
+                </option>
+
+                <option value="09:00 AM">09:00 AM</option>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="11:00 AM">11:00 AM</option>
+                <option value="12:00 PM">12:00 PM</option>
+                <option value="01:00 PM">01:00 PM</option>
+                <option value="02:00 PM">02:00 PM</option>
+                <option value="03:00 PM">03:00 PM</option>
+                <option value="04:00 PM">04:00 PM</option>
+                <option value="05:00 PM">05:00 PM</option>
+                <option value="06:00 PM">06:00 PM</option>
+                <option value="07:00 PM">07:00 PM</option>
+                <option value="08:00 PM">08:00 PM</option>
+                <option value="09:00 PM">09:00 PM</option>
+
+            </select>
+
+        </div>
+
+    </div>  <!-- ← ESTE FALTABA: cierra calendar-section -->
+
+
+    <!-- FORMULARIO -->
+
+    <div class="form-section">
+
+        <h2>Información del servicio</h2>
+
+        <p class="section-description">
+            Necesitamos algunos datos para preparar tu visita.
+        </p>
+
+
+                <form id="appointmentForm">
+
+
+                    <!-- NOMBRE -->
+
+                    <div class="form-group">
+
+                        <label for="nombre">
+                            Nombre completo
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nombre"
+                            name="nombre"
+                            placeholder="Escribe tu nombre completo"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- TELEFONO -->
+
+                    <div class="form-group">
+
+                        <label for="telefono">
+                            Teléfono
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="telefono"
+                            name="telefono"
+                            placeholder="10 dígitos"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- DIRECCION -->
+
+                    <div class="form-group">
+
+                        <label for="direccion">
+                            Dirección completa
+                        </label>
+
+                        <input
+                            type="text"
+                            id="direccion"
+                            name="direccion"
+                            placeholder="Calle, número, colonia..."
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- REFERENCIAS -->
+
+                    <div class="form-group">
+
+                        <label for="referencias">
+                            Referencias del domicilio
+                        </label>
+
+                        <textarea
+                            id="referencias"
+                            name="referencias"
+                            placeholder="Color de la casa, entre calles, edificio, etc."
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- ELECTRODOMESTICO -->
+
+                    <div class="form-group">
+
+                        <label for="electrodomestico">
+                            Electrodoméstico
+                        </label>
+
+                        <select
+                            id="electrodomestico"
+                            name="electrodomestico"
+                            required
+                        >
+
+                            <option value="">
+                                Selecciona una opción
+                            </option>
+
+                            <option>Refrigerador</option>
+                            <option>Lavadora</option>
+                            <option>Secadora</option>
+                            <option>Estufa</option>
+                            <option>Microondas</option>
+                            <option>Aire acondicionado</option>
+                            <option>Otro</option>
+
+                        </select>
+
+                    </div>
+                
+                     <!-- MARCA -->
+
+<div class="form-group">
+
+    <label for="marca">
+        Marca
+    </label>
+
+    <input
+        type="text"
+        id="marca"
+        name="marca"
+        placeholder="Ej. Mabe, LG, Samsung..."
+        required
+    >
+
+</div>
+
+
+<!-- TIPO DE SERVICIO -->
+
+<div class="form-group">
+
+    <label for="servicio">
+        Tipo de servicio
+    </label>
+
+    <select
+        id="servicio"
+        name="servicio"
+        required
+    >
+
+        <option value="" disabled selected>
+            Selecciona el servicio
+        </option>
+
+        <option value="Diagnóstico">
+            Diagnóstico
+        </option>
+
+        <option value="Mantenimiento">
+            Mantenimiento
+        </option>
+
+        <option value="Reparación">
+            Reparación
+        </option>
+
+        <option value="Instalación">
+            Instalación
+        </option>
+
+    </select>
+
+</div>
+
+                    <!-- DAÑOS -->
+
+                    <div class="form-group">
+
+                        <label for="descripcion">
+                            Descripción de los daños
+                        </label>
+
+                        <textarea
+                            id="descripcion"
+                            name="descripcion"
+                            placeholder="Cuéntanos qué problema presenta el electrodoméstico..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- FOTOS -->
+
+                    <div class="form-group">
+
+                        <label for="fotos">
+                            📷 Fotografías del equipo
+                        </label>
+
+                        <div class="upload-box">
+
+                            <input
+                                type="file"
+                                id="fotos"
+                                name="fotos"
+                                accept="image/*"
+                                multiple
+                            >
+
+                            <span>
+                                Selecciona fotografías
+                            </span>
+
+                            <small>
+                                Puedes adjuntar varias imágenes.
+                            </small>
+
+                        </div>
+
+                        <div
+                            id="preview"
+                            class="preview"
+                        ></div>
+
+                    </div>
+
+
+                    <!-- CONFIRMAR -->
+
+                    <button
+                        type="submit"
+                        class="confirm-button"
+                    >
+                        Confirmar cita
+                    </button>
+
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="js/agenda.js?v=3"></script>
+
+</body>
+</html>

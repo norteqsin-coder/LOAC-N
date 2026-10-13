@@ -1,0 +1,960 @@
+/* =========================================
+   LOACON - AGENDA DE SERVICIO
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f7fa;
+    color: #243447;
+}
+
+
+/* =========================================
+   CONTENEDOR
+   ========================================= */
+
+.agenda-container {
+    width: min(1050px, 92%);
+    margin: 20px auto;
+}
+
+
+/* =========================================
+   ENCABEZADO DE AGENDA
+   ========================================= */
+
+.agenda-top {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 20px;
+}
+
+
+/* LOGO FUERA DEL CUADRO */
+
+.agenda-logo {
+    width: 150px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+
+/* CUADRO DEL ENCABEZADO */
+
+.agenda-header {
+    flex: 1;
+    background: linear-gradient(135deg, #ffffff, #eef4f8);
+    border-radius: 18px;
+    padding: 22px 35px;
+    border: 1px solid #e1e8ee;
+    position: relative;
+    overflow: hidden;
+    min-height: 150px;
+}
+
+
+/* DECORACIÓN */
+
+.agenda-header::after {
+    content: "";
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    right: -65px;
+    top: -85px;
+    border-radius: 50%;
+    background: rgba(25, 111, 170, 0.08);
+}
+
+
+/* CONTENIDO */
+
+.agenda-header-content {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* TITULO */
+
+.agenda-header h1 {
+    margin: 0;
+    color: #183b56;
+    font-size: 38px;
+    line-height: 1.1;
+    font-weight: 800;
+}
+
+
+/* DESCRIPCIÓN */
+
+.agenda-header p {
+    max-width: 750px;
+    margin: 8px 0 0;
+    color: #64748b;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.agenda-header::after {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    right: -80px;
+    top: -100px;
+    border-radius: 50%;
+    background: rgba(25, 111, 170, 0.08);
+}
+
+.agenda-label {
+    display: inline-block;
+    color: #1769aa;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.agenda-header h1 {
+    margin: 0;
+    font-size: 42px;
+    color: #183b56;
+    font-weight: 800;
+}
+
+.agenda-header p {
+    max-width: 700px;
+    margin: 12px 0 0;
+    color: #64748b;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   CONTENIDO
+   ========================================= */
+
+.agenda-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    align-items: start;
+}
+
+
+/* =========================================
+   SECCIONES
+   ========================================= */
+
+.calendar-section,
+.form-section {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 22px;
+    padding: 24px;
+    box-shadow: 0 8px 25px rgba(31, 52, 73, 0.06);
+}
+
+.calendar-section h2,
+.form-section h2 {
+    margin: 0;
+    color: #183b56;
+    font-size: 22px;
+}
+
+.section-description {
+    color: #718096;
+    font-size: 14px;
+    margin: 8px 0 25px;
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   CALENDARIO
+   ========================================= */
+
+.calendar {
+    border: 1px solid #e3eaf0;
+    border-radius: 16px;
+    padding: 18px;
+}
+
+.calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.calendar-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #183b56;
+    text-transform: capitalize;
+}
+
+.calendar-header button {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 10px;
+    background: #edf4f8;
+    color: #1769aa;
+    font-size: 25px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.calendar-header button:hover {
+    background: #1769aa;
+    color: white;
+}
+
+.weekdays,
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 7px;
+}
+
+.weekdays span {
+    text-align: center;
+    color: #718096;
+    font-size: 12px;
+    font-weight: 700;
+    padding-bottom: 8px;
+}
+
+.calendar-days button {
+    aspect-ratio: 1;
+    border: 1px solid transparent;
+    background: #f7fafc;
+    border-radius: 10px;
+    color: #334155;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.calendar-days button:hover {
+    border-color: #1769aa;
+    color: #1769aa;
+}
+
+.calendar-days button.today {
+    border: 2px solid #1769aa;
+    font-weight: 800;
+}
+
+.calendar-days button.selected {
+    background: #1769aa;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.calendar-days button.disabled {
+    color: #cbd5e1;
+    background: #f8fafc;
+    cursor: not-allowed;
+}
+
+
+/* =========================================
+   HORARIOS
+   ========================================= */
+
+.schedule-section {
+    margin-top: 20px;
+    position: relative;
+    z-index: 20;
+    overflow: visible;
+}
+
+.schedule-section h2 {
+    margin-bottom: 10px;
+}
+
+/* =========================================
+   SELECTOR DE HORARIO
+   ========================================= */
+
+.time-select {
+    width: 75%;
+    height: 42px;
+    padding: 0 12px;
+
+    border: 1px solid #d7e1e8;
+    border-radius: 9px;
+
+    background: #ffffff;
+    color: #36566e;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+    outline: none;
+
+    position: relative;
+    z-index: 30;
+
+    transition: 0.2s;
+}
+
+.time-select:hover {
+    border-color: #1769aa;
+}
+
+.time-select:focus {
+    border-color: #1769aa;
+    box-shadow: 0 0 0 3px rgba(23, 105, 170, 0.1);
+}
+
+
+/* =========================================
+   FORMULARIO
+   ========================================= */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    color: #334155;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid #d7e1e8;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #334155;
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #1769aa;
+    box-shadow: 0 0 0 3px rgba(23, 105, 170, 0.1);
+}
+
+.form-group textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+
+/* =========================================
+   CARGA DE FOTOGRAFÍAS
+   ========================================= */
+
+.upload-box {
+    border: 2px dashed #cbd8e2;
+    border-radius: 14px;
+    padding: 22px;
+    text-align: center;
+    background: #f8fafc;
+    transition: 0.2s;
+}
+
+.upload-box:hover {
+    border-color: #1769aa;
+    background: #f1f7fb;
+}
+
+.upload-box input {
+    width: 100%;
+    border: none;
+    padding: 0;
+    margin-bottom: 8px;
+}
+
+.upload-box span {
+    display: block;
+    color: #36566e;
+    font-weight: 700;
+}
+
+.upload-box small {
+    display: block;
+    margin-top: 5px;
+    color: #94a3b8;
+}
+
+
+/* =========================================
+   PREVISUALIZACIÓN DE FOTOS
+   ========================================= */
+
+.preview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.preview img {
+    width: 100%;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #dbe4ea;
+}
+
+
+/* =========================================
+   BOTÓN CONFIRMAR
+   ========================================= */
+
+.confirm-button {
+    width: 100%;
+    min-height: 54px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #1769aa, #0d5b96);
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(13, 91, 150, 0.22);
+    transition: all 0.25s ease;
+}
+
+.confirm-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(13, 91, 150, 0.3);
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 850px) {
+
+    .agenda-content {
+        grid-template-columns: 1fr;
+    }
+
+    .agenda-header h1 {
+        font-size: 34px;
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .agenda-container {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    .agenda-header {
+        padding: 28px 22px;
+    }
+
+    .agenda-header h1 {
+        font-size: 30px;
+    }
+
+    .calendar-section,
+    .form-section {
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    .calendar {
+        padding: 12px;
+    }
+
+    .calendar-days {
+        gap: 4px;
+    }
+
+    .calendar-days button {
+        font-size: 12px;
+    }
+
+    .preview {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+@media (max-width: 850px) {
+
+    .agenda-top {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .agenda-logo {
+        width: 120px;
+    }
+
+    .agenda-header {
+        width: 100%;
+        min-height: auto;
+        padding: 22px 25px;
+        text-align: center;
+    }
+
+    .agenda-header h1 {
+        font-size: 32px;
+    }
+
+}
+/* =========================================
+   SELECTOR DE HORARIO
+   ========================================= */
+
+.time-select {
+    width: 100%;
+    height:42px;
+    padding: 0 12px;
+
+    border: 1px solid #d7e1e8;
+    border-radius: 10px;
+
+    background: #ffffff;
+    color: #36566e;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+    outline: none;
+
+    transition: 0.2s;
+}
+
+.time-select:hover {
+    border-color: #1769aa;
+}
+
+.time-select:focus {
+    border-color: #1769aa;
+    box-shadow: 0 0 0 3px rgba(23, 105, 170, 0.1);
+}
+/* =====================================================
+   FONDO DINÁMICO LOACON
+   ===================================================== */
+
+body {
+    position: relative;
+    background: #eaf5ff;
+    overflow-x: hidden;
+}
+
+
+/* FONDO GENERAL */
+
+.dynamic-background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(0, 157, 255, 0.25),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 85% 30%,
+            rgba(0, 119, 255, 0.18),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 80% 85%,
+            rgba(0, 174, 255, 0.24),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #eef8ff 0%,
+            #dcefff 50%,
+            #f5fbff 100%
+        );
+}
+
+
+/* =====================================================
+   CÍRCULOS DE LUZ
+   ===================================================== */
+
+.bg-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(2px);
+}
+
+
+/* IZQUIERDA */
+
+.bg-orb-1 {
+    width: 330px;
+    height: 330px;
+    left: -150px;
+    top: 12%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 157, 255, 0.55) 0%,
+            rgba(0, 157, 255, 0.20) 45%,
+            transparent 72%
+        );
+
+    animation: orbMove1 14s ease-in-out infinite alternate;
+}
+
+
+/* DERECHA */
+
+.bg-orb-2 {
+    width: 380px;
+    height: 380px;
+    right: -170px;
+    top: 38%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 174, 255, 0.50) 0%,
+            rgba(0, 130, 230, 0.18) 45%,
+            transparent 72%
+        );
+
+    animation: orbMove2 17s ease-in-out infinite alternate;
+}
+
+
+/* PARTE INFERIOR */
+
+.bg-orb-3 {
+    width: 300px;
+    height: 300px;
+    left: 38%;
+    bottom: -170px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 119, 255, 0.30),
+            transparent 70%
+        );
+
+    animation: orbMove3 16s ease-in-out infinite alternate;
+}
+
+
+/* MOVIMIENTO */
+
+@keyframes orbMove1 {
+
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(120px, 60px);
+    }
+
+}
+
+
+@keyframes orbMove2 {
+
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(-100px, -70px);
+    }
+
+}
+
+
+@keyframes orbMove3 {
+
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(100px, -80px);
+    }
+
+}
+
+
+/* =====================================================
+   CUADRÍCULA
+   ===================================================== */
+
+.bg-grid {
+
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 105, 180, 0.07) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0, 105, 180, 0.07) 1px,
+            transparent 1px
+        );
+
+    background-size: 55px 55px;
+
+    opacity: 0.8;
+}
+
+
+/* =====================================================
+   ONDAS / LÍNEAS
+   ===================================================== */
+
+.bg-line {
+
+    position: absolute;
+
+    height: 5px;
+
+    border-radius: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0, 120, 255, 0.85),
+            rgba(255, 255, 255, 0.95),
+            rgba(0, 157, 255, 0.8),
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px rgba(0, 140, 255, 0.45),
+        0 0 30px rgba(0, 140, 255, 0.20);
+
+    opacity: 0.75;
+}
+
+
+/* ONDA SUPERIOR */
+
+.bg-line-1 {
+
+    width: 700px;
+
+    top: 15%;
+    left: -200px;
+
+    transform: rotate(-22deg);
+
+    animation: lineMove1 12s ease-in-out infinite alternate;
+}
+
+
+/* ONDA INFERIOR */
+
+.bg-line-2 {
+
+    width: 650px;
+
+    bottom: 18%;
+    right: -180px;
+
+    transform: rotate(22deg);
+
+    animation: lineMove2 15s ease-in-out infinite alternate;
+}
+
+
+@keyframes lineMove1 {
+
+    0% {
+        transform:
+            translateX(-30px)
+            rotate(-22deg);
+    }
+
+    100% {
+        transform:
+            translateX(180px)
+            rotate(-22deg);
+    }
+
+}
+
+
+@keyframes lineMove2 {
+
+    0% {
+        transform:
+            translateX(30px)
+            rotate(22deg);
+    }
+
+    100% {
+        transform:
+            translateX(-180px)
+            rotate(22deg);
+    }
+
+}
+
+
+/* =====================================================
+   TARJETAS
+   ===================================================== */
+
+.calendar-section,
+.form-section {
+
+    background: rgba(255, 255, 255, 0.94);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 12px 35px rgba(0, 74, 130, 0.10);
+}
+
+
+/* =====================================================
+   ACCESIBILIDAD
+   ===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .bg-orb,
+    .bg-line {
+        animation: none;
+    }
+
+}
+/* =====================================================
+   PUNTOS TECNOLÓGICOS
+   ===================================================== */
+
+.bg-dots {
+
+    position: absolute;
+
+    width: 90px;
+    height: 90px;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(0, 125, 255, 0.55) 2px,
+            transparent 3px
+        );
+
+    background-size: 18px 18px;
+
+    opacity: 0.65;
+
+    animation: dotsFloat 8s ease-in-out infinite alternate;
+}
+
+
+.bg-dots-1 {
+    top: 18%;
+    left: 4%;
+}
+
+
+.bg-dots-2 {
+    top: 48%;
+    right: 5%;
+}
+
+
+.bg-dots-3 {
+    bottom: 8%;
+    left: 12%;
+}
+
+
+@keyframes dotsFloat {
+
+    from {
+        transform: translateY(0);
+        opacity: 0.45;
+    }
+
+    to {
+        transform: translateY(-15px);
+        opacity: 0.8;
+    }
+
+}
+/* =========================================
+   BOTÓN REGRESAR
+   ========================================= */
+
+.btn-regresar {
+    position: relative;
+    z-index: 50;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    margin: 18px 0 0 40px;
+    padding: 9px 16px;
+
+    border: 1px solid #d5e4ef;
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    color: #1769aa;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    box-shadow: 0 4px 12px rgba(0, 80, 140, 0.08);
+
+    transition: all 0.2s ease;
+}
+
+.btn-regresar:hover {
+    background: #ffffff;
+    transform: translateX(-3px);
+    box-shadow: 0 6px 16px rgba(0, 80, 140, 0.14);
+}
