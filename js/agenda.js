@@ -7,6 +7,11 @@ let currentDate = new Date();
 let selectedDate = null;
 let selectedTime = null;
 
+/* =========================================
+   WHATSAPP LOACON
+   ========================================= */
+
+const WHATSAPP = "525538827062";
 
 /* =========================================
    CALENDARIO
