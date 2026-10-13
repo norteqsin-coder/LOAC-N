@@ -184,6 +184,18 @@ const preview =
     document.getElementById("preview");
 
 
+/* =========================================
+   CONFIGURACIÓN CLOUDINARY
+   ========================================= */
+
+const CLOUDINARY_CLOUD_NAME = "nhkedhtw";
+const CLOUDINARY_UPLOAD_PRESET = "loacon_fotos";
+
+
+/* =========================================
+   VISTA PREVIA DE FOTOS
+   ========================================= */
+
 photoInput.addEventListener("change", () => {
 
     preview.innerHTML = "";
@@ -204,7 +216,6 @@ photoInput.addEventListener("change", () => {
                 document.createElement("img");
 
             image.src = event.target.result;
-
             image.alt = "Fotografía seleccionada";
 
             preview.appendChild(image);
@@ -219,12 +230,62 @@ photoInput.addEventListener("change", () => {
 
 
 /* =========================================
-   WHATSAPP LOACON
+   SUBIR FOTOS A CLOUDINARY
    ========================================= */
 
-// Número de WhatsApp 1
-const WHATSAPP = "525538827062";
+async function subirFotosCloudinary() {
 
+    const files =
+        Array.from(photoInput.files);
+
+    if (files.length === 0) {
+        return [];
+    }
+
+    const urls = [];
+
+    for (const file of files) {
+
+        if (!file.type.startsWith("image/")) {
+            continue;
+        }
+
+        const formData =
+            new FormData();
+
+        formData.append(
+            "file",
+            file
+        );
+
+        formData.append(
+            "upload_preset",
+            CLOUDINARY_UPLOAD_PRESET
+        );
+
+        const response =
+            await fetch(
+                `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
+                {
+                    method: "POST",
+                    body: formData
+                }
+            );
+
+        if (!response.ok) {
+            throw new Error(
+                "No se pudo subir una de las fotografías."
+            );
+        }
+
+        const data =
+            await response.json();
+
+        urls.push(data.secure_url);
+    }
+
+    return urls;
+}
 
 /* =========================================
    FORMULARIO
@@ -261,7 +322,7 @@ function generarFolio() {
 }
 
 
-form.addEventListener("submit", event => {
+form.addEventListener("submit", async event => {
 
     event.preventDefault();
 
@@ -320,9 +381,37 @@ form.addEventListener("submit", event => {
     const direccion =
         formData.get("direccion") || "No proporcionada";
 
-    const comentarios =
-        formData.get("comentarios") || "Sin comentarios";
+    const referencias =
+         formData.get("referencias") || "Sin referencias";
 
+    const comentarios =
+        formData.get("descripcion") || "Sin comentarios";
+
+        /* =========================================
+   SUBIR FOTOGRAFÍAS
+   ========================================= */
+
+let fotosUrls = [];
+
+try {
+
+    fotosUrls =
+        await subirFotosCloudinary();
+
+} catch (error) {
+
+    console.error(
+        "Error al subir fotografías:",
+        error
+    );
+
+    alert(
+        "No se pudieron subir las fotografías. " +
+        "Por favor intenta nuevamente."
+    );
+
+    return;
+}
 
     // =========================================
     // FORMATO DE FECHA
@@ -370,8 +459,19 @@ ${selectedTime}
 📍 *Dirección Completa:*
 ${direccion}
 
+📌 *Referencias:*
+${referencias}
+
 📝 *Comentarios:*
 ${comentarios}
+
+${fotosUrls.length > 0
+    ? `📸 *Fotografías del equipo:*
+${fotosUrls.map((url, index) =>
+    `${index + 1}. ${url}`
+).join("\n")}`
+    : ""
+}
 
 ━━━━━━━━━━━━━━━━━━
 Solicitud enviada desde LOACON`;
