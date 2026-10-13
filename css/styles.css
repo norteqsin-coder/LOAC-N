@@ -587,379 +587,169 @@ footer {
     transform: scale(1.08);
 }
 /* =========================================
-   HERO - VERSION MOVIL
-   ========================================= */
-
-.hero {
-    width: 100%;
-    min-height: 560px;
-
-    padding: 42px 20px 35px;
-
-    background-size: cover;
-    background-position: 72% center;
-
-    position: relative;
-}
-
-
-/* Capa suave para mejorar lectura */
-
-.hero::before {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,0.96) 0%,
-            rgba(255,255,255,0.82) 42%,
-            rgba(255,255,255,0.15) 100%
-        );
-
-    z-index: 0;
-}
-
-
-/* Contenido */
-
-.hero-content {
-    position: relative;
-    z-index: 1;
-
-    width: 100%;
-    max-width: 100%;
-
-    margin-left: 0;
-
-    padding-right: 35px;
-}
-
-
-/* TÍTULO */
-
-.hero h1 {
-    font-size: 34px;
-    line-height: 1.05;
-
-    margin-bottom: 16px;
-}
-
-
-/* "Buenas manos" */
-
-.frase-destacada {
-    font-size: 43px;
-    line-height: 1;
-
-    display: inline-block;
-}
-
-
-/* DESCRIPCIÓN */
-
-.hero p {
-    font-size: 16px;
-    line-height: 1.4;
-
-    margin-bottom: 22px;
-
-    max-width: 330px;
-}
-
-
-/* BOTONES */
-
-.hero-buttons {
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    gap: 10px;
-}
-
-
-/* Botones más compactos */
-
-.btn-primary,
-.btn-secondary {
-    width: auto;
-
-    min-width: 275px;
-
-    padding: 15px 22px;
-
-    font-size: 17px;
-
-    text-align: center;
-}
-
-
-/* BENEFICIOS */
-
-.hero-benefits {
-    flex-direction: column;
-
-    gap: 8px;
-
-    margin-top: 18px;
-}
-
-
-/* Tarjetas de beneficios */
-
-.benefit {
-    width: 100%;
-    max-width: 335px;
-
-    padding: 10px 14px;
-
-    border-radius: 14px;
-}
-
-
-/* Texto de beneficios */
-
-.benefit strong {
-    font-size: 15px;
-}
-
-.benefit small {
-    font-size: 13px;
-}
-/* =========================================
-   LOACON - CORRECCIÓN RESPONSIVE DEFINITIVA
-   ========================================= */
-
-* {
-    box-sizing: border-box;
-}
-
-html,
-body {
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
-
-body {
-    min-width: 0;
-}
-
-
-/* =========================================
-   HEADER
+   VERSION MOVIL LOACON
    ========================================= */
 
 @media (max-width: 600px) {
 
-    header {
+    html,
+    body {
         width: 100%;
         max-width: 100%;
-        height: 78px;
-        padding: 0 18px;
-
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
     }
 
-    .logo {
-        width: auto;
+    /* =========================
+       HEADER
+       ========================= */
+
+    header {
+        width: 100%;
+        height: 70px;
+        padding: 0 15px;
+        box-sizing: border-box;
     }
 
     .logo img {
-        width: 125px;
-        height: auto;
-        transform: none;
+        width: 105px;
+        transform: translateY(10px);
     }
 
     nav {
         display: none;
     }
 
-    .btn-servicio {
-        display: inline-flex;
+    .btn-header {
+        display: none;
+    }
 
-        align-items: center;
-        justify-content: center;
-
-        padding: 10px 16px;
-
+    header .btn-servicio {
         font-size: 14px;
-
+        padding: 8px 12px;
         white-space: nowrap;
     }
 
 
-    /* =====================================
+    /* =========================
        HERO
-       ===================================== */
+       ========================= */
 
     .hero {
         width: 100%;
-        max-width: 100%;
-        min-height: 0;
+        min-height: 540px;
+        height: auto;
 
-        padding: 42px 20px 30px;
+        padding: 55px 18px 30px;
 
-        position: relative;
-
-        overflow: hidden;
+        box-sizing: border-box;
 
         background-size: cover;
-        background-position: 68% center;
-    }
 
-    .hero::before {
-        content: "";
-
-        position: absolute;
-        inset: 0;
-
-        background:
-            linear-gradient(
-                90deg,
-                rgba(255,255,255,0.97) 0%,
-                rgba(255,255,255,0.88) 42%,
-                rgba(255,255,255,0.20) 100%
-            );
-
-        z-index: 0;
+        /* Movemos la imagen un poco hacia la derecha */
+        background-position: 70% center;
     }
 
     .hero-content {
-        position: relative;
-        z-index: 1;
-
         width: 100%;
         max-width: 100%;
-
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
     }
-
-
-    /* TÍTULO */
 
     .hero h1 {
-        width: 100%;
-        max-width: 330px;
-
-        margin: 0 0 14px;
-
-        font-size: 34px;
+        font-size: 32px;
         line-height: 1.05;
+        margin-bottom: 14px;
     }
-
-    .frase-destacada {
-        font-size: 42px;
-        line-height: 1;
-    }
-
-
-    /* DESCRIPCIÓN */
 
     .hero p {
-        width: 100%;
-        max-width: 330px;
-
-        margin: 0 0 22px;
-
         font-size: 16px;
-        line-height: 1.4;
+        line-height: 1.35;
+        margin-bottom: 20px;
+        max-width: 330px;
     }
 
-
-    /* =====================================
-       BOTONES
-       ===================================== */
-
     .hero-buttons {
-        width: 100%;
-
         display: flex;
         flex-direction: column;
-
         align-items: flex-start;
-
         gap: 10px;
     }
 
     .btn-primary,
     .btn-secondary {
-        width: 100%;
-        max-width: 315px;
-
-        min-width: 0;
-
-        padding: 14px 20px;
-
+        width: auto;
+        min-width: 250px;
+        padding: 13px 20px;
         font-size: 16px;
-
-        text-align: center;
+        box-sizing: border-box;
     }
 
 
-    /* =====================================
+    /* =========================
        BENEFICIOS
-       ===================================== */
+       ========================= */
 
     .hero-benefits {
-        width: 100%;
-
         display: flex;
         flex-direction: column;
-
-        gap: 8px;
-
-        margin-top: 20px;
+        gap: 9px;
+        margin-top: 18px;
     }
 
     .benefit {
         width: 100%;
-        max-width: 330px;
+        max-width: 350px;
+        min-height: 60px;
 
-        padding: 10px 13px;
+        padding: 10px 14px;
 
-        border-radius: 14px;
+        box-sizing: border-box;
+    }
+
+    .benefit-icon {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+        font-size: 18px;
     }
 
     .benefit strong {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .benefit small {
-        font-size: 12px;
+        font-size: 13px;
     }
 
 
-    /* =====================================
+    /* =========================
        MARCAS
-       ===================================== */
+       ========================= */
 
     .marcas {
         width: 100%;
-        max-width: 100%;
-
+        padding: 38px 0 35px;
         overflow: hidden;
-
-        padding: 28px 0 35px;
+        box-sizing: border-box;
     }
 
     .marcas-titulo {
-        width: 100%;
-
         padding: 0 20px;
+    }
+
+    .marcas-titulo span {
+        font-size: 12px;
+        letter-spacing: 3px;
     }
 
     .marcas-titulo h2 {
         font-size: 28px;
+        line-height: 1.1;
+        margin-bottom: 25px;
     }
 
     .marcas-grid {
@@ -968,19 +758,21 @@ body {
 
         display: flex;
 
-        flex-wrap: nowrap;
+        overflow-x: auto;
 
         justify-content: flex-start;
 
-        overflow-x: auto;
-
         padding: 5px 20px 15px;
 
-        gap: 14px;
+        gap: 12px;
 
-        scrollbar-width: none;
+        flex-wrap: nowrap;
+
+        box-sizing: border-box;
 
         -webkit-overflow-scrolling: touch;
+
+        scrollbar-width: none;
     }
 
     .marcas-grid::-webkit-scrollbar {
@@ -988,23 +780,28 @@ body {
     }
 
     .marca-circle {
-        flex: 0 0 115px;
+        flex: 0 0 105px;
 
-        width: 115px;
-        height: 100px;
+        width: 105px;
+        height: 85px;
+
+        box-sizing: border-box;
+    }
+
+    .marca-circle img {
+        max-width: 78px;
+        max-height: 48px;
     }
 
 
-    /* =====================================
+    /* =========================
        SERVICIOS
-       ===================================== */
+       ========================= */
 
-    .servicios-section,
     .section {
         width: 100%;
-        max-width: 100%;
-
-        padding: 50px 20px;
+        padding: 45px 18px;
+        box-sizing: border-box;
     }
 
     .section-heading {
@@ -1012,44 +809,68 @@ body {
         max-width: 100%;
     }
 
+    .section-label {
+        font-size: 12px;
+        letter-spacing: 3px;
+    }
+
     .section-title {
-        font-size: 31px;
+        font-size: 29px;
         line-height: 1.1;
     }
 
     .section-subtitle {
-        font-size: 16px;
+        font-size: 15px;
         line-height: 1.45;
     }
 
     .services {
         width: 100%;
-        max-width: 100%;
 
         display: grid;
 
         grid-template-columns: 1fr;
 
-        gap: 18px;
+        gap: 15px;
     }
 
     .service-card {
         width: 100%;
-        max-width: 100%;
 
-        padding: 28px 22px;
+        padding: 24px 20px;
+
+        box-sizing: border-box;
+    }
+
+    .service-icon {
+        width: 60px;
+        height: 60px;
+
+        margin-bottom: 18px;
+    }
+
+    .service-card h3 {
+        font-size: 21px;
+    }
+
+    .service-card p {
+        font-size: 15px;
+        line-height: 1.45;
+    }
+
+    .service-card a {
+        font-size: 14px;
     }
 
 
-    /* =====================================
+    /* =========================
        POR QUÉ LOACON
-       ===================================== */
+       ========================= */
 
     .why-loacon {
         width: 100%;
-        max-width: 100%;
-
-        padding: 55px 20px;
+        padding: 50px 18px;
+        box-sizing: border-box;
     }
 
     .why-content {
@@ -1057,22 +878,32 @@ body {
         max-width: 100%;
     }
 
+    .why-loacon h2 {
+        font-size: 29px;
+        line-height: 1.1;
+    }
+
+    .why-intro {
+        font-size: 15px;
+        line-height: 1.45;
+    }
+
     .advantages {
         width: 100%;
 
         grid-template-columns: 1fr;
 
-        gap: 20px;
+        gap: 18px;
     }
 
 
-    /* =====================================
+    /* =========================
        FOOTER
-       ===================================== */
+       ========================= */
 
     footer {
         width: 100%;
-        max-width: 100%;
+        box-sizing: border-box;
     }
 
-} 
+}
