@@ -1,5 +1,4 @@
-
-        * {
+* {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -42,16 +41,70 @@
             align-items: center;
         }
 
-        nav a {
-            text-decoration: none;
-            color: #263f56;
-            font-size: 15px;
-            font-weight: 600;
-        }
+        /* ===== MENÚ DINÁMICO ===== */
 
-        nav a:hover {
-            color: #1261a0;
-        }
+nav {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+nav a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 15px;
+
+    color: #263f56;
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    border-radius: 8px;
+
+    transition:
+        color 0.3s ease,
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+/* Línea animada */
+nav a::after {
+    content: "";
+    position: absolute;
+
+    left: 50%;
+    bottom: 4px;
+
+    width: 0;
+    height: 3px;
+
+    background: linear-gradient(
+        90deg,
+        #1261a0,
+        #1597e5
+    );
+
+    border-radius: 10px;
+
+    transform: translateX(-50%);
+
+    transition: width 0.3s ease;
+}
+
+/* Hover */
+nav a:hover {
+    color: #1261a0;
+    background: #f1f7fc;
+    transform: translateY(-2px);
+}
+
+nav a:hover::after {
+    width: 55%;
+}
 
         .btn-header {
             background: #1261a0;
@@ -61,6 +114,45 @@
             text-decoration: none;
             font-weight: bold;
         }
+        /* ===== BOTÓN SOLICITAR SERVICIO ===== */
+
+.btn-servicio {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 11px 20px;
+
+    background: linear-gradient(135deg, #1261a0, #1688d8);
+    color: #ffffff;
+
+    border: 1px solid #1261a0;
+    border-radius: 8px;
+
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    box-shadow: 0 4px 10px rgba(18, 97, 160, 0.20);
+
+    transition: all 0.3s ease;
+}
+
+.btn-servicio:hover {
+    background: linear-gradient(135deg, #0d4f87, #126fba);
+    color: #ffffff;
+    text-decoration: none;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 7px 16px rgba(18, 97, 160, 0.30);
+}
+
+.btn-servicio:active {
+    transform: translateY(0);
+}
 /* ===== HERO ===== */
 
 .hero {
@@ -406,33 +498,6 @@
     line-height: 1.5;
     font-size: 14px;
 }
-
-
-/* ===== RESPONSIVE ===== */
-
-@media (max-width: 900px) {
-
-    .advantages {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-}
-
-@media (max-width: 600px) {
-
-    .advantages {
-        grid-template-columns: 1fr;
-    }
-
-    .why-loacon {
-        padding: 60px 25px;
-    }
-
-    .why-loacon h2 {
-        font-size: 32px;
-    }
-
-}
 /* ===== AJUSTE FINAL DE SECCIONES ===== */
 
 .why-loacon {
@@ -586,8 +651,86 @@ footer {
 .marca-circle:hover img {
     transform: scale(1.08);
 }
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 900px) {
+
+    .advantages {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .advantages {
+        grid-template-columns: 1fr;
+    }
+
+    .why-loacon {
+        padding: 60px 25px;
+    }
+
+    .why-loacon h2 {
+        font-size: 32px;
+    }
+
+}
+
+/* =========================================
+   VERSION COMPUTADORA LOACON
+   ========================================= */
+
+@media (min-width: 601px) {
+
+    .hero {
+        width: 100%;
+        height: 700px;
+        min-height: 700px;
+        padding: 0;
+        box-sizing: border-box;
+
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+
+    .hero-content {
+        width: 650px;
+        max-width: 650px;
+
+        margin-left: 6.5%;
+        margin-right: 0;
+
+        box-sizing: border-box;
+
+        transform: none;
+    }
+
+    .hero h1 {
+        font-size: 58px;
+        line-height: 1.05;
+    }
+
+    .hero p {
+        font-size: 22px;
+        line-height: 1.4;
+    }
+
+    .hero-buttons {
+        gap: 15px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        font-size: 16px;
+    }
+
+}
 /* =========================================
    VERSION MOVIL LOACON
+   SOLO CELULAR
    ========================================= */
 
 @media (max-width: 600px) {
@@ -601,54 +744,66 @@ footer {
         overflow-x: hidden;
     }
 
-    /* =========================
-       HEADER
-       ========================= */
-
+    /* HEADER */
     header {
         width: 100%;
-        height: 70px;
-        padding: 0 15px;
+        height: 62px;
+        padding: 0 14px;
         box-sizing: border-box;
     }
 
     .logo img {
-        width: 105px;
-        transform: translateY(10px);
+        width: 88px;
+        transform: none;
     }
 
-    nav {
-        display: none;
-    }
-
+    nav,
     .btn-header {
         display: none;
     }
 
-    header .btn-servicio {
-        font-size: 14px;
-        padding: 8px 12px;
-        white-space: nowrap;
-    }
+   header .btn-servicio {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
 
+    background: linear-gradient(135deg, #1261a0, #1688d8);
+    color: #ffffff;
 
-    /* =========================
-       HERO
-       ========================= */
+    border: 1px solid #1261a0;
+    border-radius: 8px;
 
+    text-decoration: none;
+
+    box-shadow: 0 4px 10px rgba(18, 97, 160, 0.20);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+header .btn-servicio:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #0d4f87, #126fba);
+    box-shadow: 0 7px 16px rgba(18, 97, 160, 0.30);
+}
+
+header .btn-servicio:active {
+    transform: translateY(0);
+}
+
+    /* HERO */
     .hero {
         width: 100%;
-        min-height: 540px;
-        height: auto;
-
-        padding: 55px 18px 30px;
-
+        min-height: 0;
+        height: 485px;
+        padding: 30px 16px 22px;
         box-sizing: border-box;
-
-        background-size: cover;
-
-        /* Movemos la imagen un poco hacia la derecha */
-        background-position: 70% center;
+        background-size: auto 100%;
+        background-position: 78% center;
+        background-repeat: no-repeat;
     }
 
     .hero-content {
@@ -657,121 +812,120 @@ footer {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        transform: none;
     }
 
     .hero h1 {
-        font-size: 32px;
-        line-height: 1.05;
-        margin-bottom: 14px;
+        font-size: 29px;
+        line-height: 1.02;
+        margin: 0 0 10px;
+        max-width: 300px;
+    }
+
+    .frase-destacada {
+        font-size: 1.06em;
+        letter-spacing: 0;
+    }
+
+    .frase-destacada::after {
+        height: 3px;
+        bottom: -3px;
     }
 
     .hero p {
-        font-size: 16px;
+        font-size: 14px;
         line-height: 1.35;
-        margin-bottom: 20px;
-        max-width: 330px;
+        margin: 0 0 15px;
+        max-width: 295px;
     }
 
+    /* BOTONES */
     .hero-buttons {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 10px;
+        gap: 7px;
+        width: 100%;
     }
 
     .btn-primary,
     .btn-secondary {
-        width: auto;
-        min-width: 250px;
-        padding: 13px 20px;
-        font-size: 16px;
+        width: 225px;
+        min-width: 225px;
+        padding: 10px 14px;
+        font-size: 14px;
         box-sizing: border-box;
+        text-align: center;
     }
 
-
-    /* =========================
-       BENEFICIOS
-       ========================= */
-
+    /* BENEFICIOS */
     .hero-benefits {
         display: flex;
         flex-direction: column;
-        gap: 9px;
-        margin-top: 18px;
+        gap: 6px;
+        margin-top: 13px;
+        width: 100%;
     }
 
     .benefit {
-        width: 100%;
-        max-width: 350px;
-        min-height: 60px;
-
-        padding: 10px 14px;
-
+        width: 285px;
+        max-width: 90%;
+        min-height: 49px;
+        padding: 7px 10px;
         box-sizing: border-box;
+        gap: 8px;
+        border-radius: 9px;
     }
 
     .benefit-icon {
-        width: 38px;
-        height: 38px;
-        min-width: 38px;
-        font-size: 18px;
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+        font-size: 14px;
     }
 
     .benefit strong {
-        font-size: 15px;
+        font-size: 12px;
     }
 
     .benefit small {
-        font-size: 13px;
+        font-size: 10px;
     }
 
-
-    /* =========================
-       MARCAS
-       ========================= */
-
+    /* MARCAS */
     .marcas {
         width: 100%;
-        padding: 38px 0 35px;
+        padding: 28px 0 28px;
         overflow: hidden;
         box-sizing: border-box;
     }
 
     .marcas-titulo {
-        padding: 0 20px;
+        padding: 0 16px;
     }
 
     .marcas-titulo span {
-        font-size: 12px;
-        letter-spacing: 3px;
+        font-size: 10px;
+        letter-spacing: 2.5px;
     }
 
     .marcas-titulo h2 {
-        font-size: 28px;
+        font-size: 24px;
         line-height: 1.1;
-        margin-bottom: 25px;
+        margin: 5px 0 19px;
     }
 
     .marcas-grid {
         width: 100%;
         max-width: 100%;
-
         display: flex;
-
         overflow-x: auto;
-
         justify-content: flex-start;
-
-        padding: 5px 20px 15px;
-
-        gap: 12px;
-
+        padding: 4px 16px 10px;
+        gap: 9px;
         flex-wrap: nowrap;
-
         box-sizing: border-box;
-
         -webkit-overflow-scrolling: touch;
-
         scrollbar-width: none;
     }
 
@@ -780,96 +934,90 @@ footer {
     }
 
     .marca-circle {
-        flex: 0 0 105px;
-
-        width: 105px;
-        height: 85px;
-
+        flex: 0 0 88px;
+        width: 88px;
+        height: 68px;
+        border-radius: 12px;
         box-sizing: border-box;
     }
 
     .marca-circle img {
-        max-width: 78px;
-        max-height: 48px;
+        max-width: 65px;
+        max-height: 40px;
     }
 
-
-    /* =========================
-       SERVICIOS
-       ========================= */
-
+    /* SERVICIOS */
     .section {
         width: 100%;
-        padding: 45px 18px;
+        padding: 38px 16px;
         box-sizing: border-box;
     }
 
     .section-heading {
         width: 100%;
         max-width: 100%;
+        margin-bottom: 28px;
     }
 
     .section-label {
-        font-size: 12px;
-        letter-spacing: 3px;
+        font-size: 10px;
+        letter-spacing: 2.5px;
+        margin-bottom: 8px;
     }
 
     .section-title {
-        font-size: 29px;
-        line-height: 1.1;
+        font-size: 27px;
+        line-height: 1.08;
+        margin-bottom: 9px;
     }
 
     .section-subtitle {
-        font-size: 15px;
+        font-size: 14px;
         line-height: 1.45;
+        margin-bottom: 0;
     }
 
     .services {
         width: 100%;
-
         display: grid;
-
         grid-template-columns: 1fr;
-
-        gap: 15px;
+        gap: 12px;
     }
 
     .service-card {
         width: 100%;
-
-        padding: 24px 20px;
-
+        padding: 20px 17px;
         box-sizing: border-box;
+        border-radius: 13px;
     }
 
     .service-icon {
-        width: 60px;
-        height: 60px;
-
-        margin-bottom: 18px;
+        width: 50px;
+        height: 50px;
+        margin-bottom: 14px;
+        font-size: 23px;
     }
 
     .service-card h3 {
-        font-size: 21px;
+        font-size: 19px;
+        margin-bottom: 8px;
     }
 
     .service-card p {
-        font-size: 15px;
-        line-height: 1.45;
+        font-size: 14px;
+        line-height: 1.4;
+        min-height: 0;
+        margin-bottom: 14px;
     }
 
     .service-card a {
-        font-size: 14px;
+        font-size: 13px;
     }
 
-
-    /* =========================
-       POR QUÉ LOACON
-       ========================= */
-
+    /* POR QUÉ LOACON */
     .why-loacon {
         width: 100%;
-        padding: 50px 18px;
+        padding: 42px 16px;
         box-sizing: border-box;
     }
 
@@ -879,31 +1027,541 @@ footer {
     }
 
     .why-loacon h2 {
-        font-size: 29px;
+        font-size: 27px;
         line-height: 1.1;
     }
 
     .why-intro {
-        font-size: 15px;
+        font-size: 14px;
         line-height: 1.45;
+        margin-bottom: 28px;
     }
 
     .advantages {
         width: 100%;
-
         grid-template-columns: 1fr;
-
-        gap: 18px;
+        gap: 14px;
     }
 
+    .advantage {
+        gap: 11px;
+    }
 
-    /* =========================
-       FOOTER
-       ========================= */
+    .advantage-icon {
+        min-width: 38px;
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+    }
 
+    .advantage h3 {
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+
+    .advantage p {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    /* FOOTER */
     footer {
         width: 100%;
+        padding: 24px 16px;
         box-sizing: border-box;
+        font-size: 13px;
+    }
+}
+
+/* =========================================
+   SERVICIOS DINÁMICOS LOACON
+   ========================================= */
+
+.servicios-selector {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 14px;
+    margin: 30px 0 25px;
+}
+
+.servicio-option {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    min-height: 105px;
+    padding: 15px 10px;
+
+    background: #ffffff;
+    color: #123b63;
+
+    border: 1px solid #dce5ec;
+    border-radius: 14px;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow: 0 4px 12px rgba(18, 59, 99, 0.05);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+.servicio-option-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #edf5fb;
+
+    border-radius: 12px;
+
+    font-size: 24px;
+
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+
+/* HOVER */
+
+.servicio-option:hover {
+    transform: translateY(-5px);
+
+    border-color: #1688d8;
+
+    box-shadow: 0 10px 25px rgba(18, 97, 160, 0.14);
+}
+
+.servicio-option:hover .servicio-option-icon {
+    transform: scale(1.1);
+}
+
+
+/* SERVICIO ACTIVO */
+
+.servicio-option.active {
+    background: linear-gradient(135deg, #1261a0, #1688d8);
+
+    color: #ffffff;
+
+    border-color: #1261a0;
+
+    box-shadow: 0 10px 25px rgba(18, 97, 160, 0.25);
+
+    transform: translateY(-3px);
+}
+
+.servicio-option.active .servicio-option-icon {
+    background: rgba(255, 255, 255, 0.18);
+
+    transform: scale(1.08);
+}
+
+
+/* =========================================
+   PANEL DE INFORMACIÓN
+   ========================================= */
+
+.servicio-detalle {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 35px;
+
+    min-height: 250px;
+
+    padding: 38px 42px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f7fbfe 100%
+        );
+
+    border: 1px solid #dce5ec;
+    border-radius: 20px;
+
+    box-shadow:
+        0 12px 35px rgba(18, 59, 99, 0.08);
+
+    overflow: hidden;
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* Detalle decorativo */
+
+.servicio-detalle::after {
+    content: "";
+
+    position: absolute;
+
+    right: -80px;
+    top: -80px;
+
+    width: 220px;
+    height: 220px;
+
+    background: rgba(18, 97, 160, 0.05);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+/* ICONO GRANDE */
+
+.servicio-detalle-icon {
+    position: relative;
+    z-index: 1;
+
+    flex: 0 0 110px;
+
+    width: 110px;
+    height: 110px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #edf5fb;
+
+    border: 1px solid #d8e8f3;
+
+    border-radius: 22px;
+
+    font-size: 52px;
+
+    box-shadow: 0 8px 20px rgba(18, 97, 160, 0.08);
+
+    transition: transform 0.3s ease;
+}
+
+.servicio-detalle:hover .servicio-detalle-icon {
+    transform: scale(1.05) rotate(-3deg);
+}
+
+
+/* CONTENIDO */
+
+.servicio-detalle-content {
+    position: relative;
+    z-index: 1;
+
+    flex: 1;
+}
+
+.detalle-label {
+    display: inline-block;
+
+    margin-bottom: 5px;
+
+    color: #1261a0;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.servicio-detalle h3 {
+    margin: 4px 0 8px;
+
+    color: #123b63;
+
+    font-size: 30px;
+    line-height: 1.2;
+}
+
+.servicio-detalle p {
+    max-width: 700px;
+
+    margin: 0 0 20px;
+
+    color: #5d7183;
+
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
+/* LISTA */
+
+.detalle-lista {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 10px 24px;
+
+    margin-bottom: 25px;
+}
+
+.detalle-lista div {
+    color: #40566b;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* BOTÓN */
+
+.btn-detalle-servicio {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 22px;
+
+    background: linear-gradient(135deg, #1261a0, #1688d8);
+
+    color: #ffffff;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    box-shadow: 0 5px 14px rgba(18, 97, 160, 0.22);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.btn-detalle-servicio:hover {
+    color: #ffffff;
+
+    background: linear-gradient(135deg, #0d4f87, #126fba);
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 9px 20px rgba(18, 97, 160, 0.3);
+}
+<script>
+/* =========================================
+   SERVICIOS DINÁMICOS LOACON
+   ========================================= */
+
+const serviciosLoacon = {
+
+    refrigeradores: {
+        icono: "❄",
+        titulo: "Refrigeradores",
+        descripcion: "Diagnóstico, reparación y mantenimiento de refrigeradores.",
+        opciones: [
+            "✓ Diagnóstico de fallas",
+            "✓ Mantenimiento preventivo",
+            "✓ Reparación"
+        ]
+    },
+
+    lavadoras: {
+        icono: "🧺",
+        titulo: "Lavadoras",
+        descripcion: "Reparación de fallas, mantenimiento y revisión general.",
+        opciones: [
+            "✓ Diagnóstico",
+            "✓ Reparación",
+            "✓ Mantenimiento"
+        ]
+    },
+
+    estufas: {
+        icono: "🔥",
+        titulo: "Estufas y hornos",
+        descripcion: "Servicio técnico para estufas, hornos y equipos de cocina.",
+        opciones: [
+            "✓ Diagnóstico",
+            "✓ Reparación",
+            "✓ Mantenimiento"
+        ]
+    },
+
+    secadoras: {
+        icono: "🌬️",
+        titulo: "Secadoras",
+        descripcion: "Diagnóstico y reparación de secadoras domésticas.",
+        opciones: [
+            "✓ Diagnóstico",
+            "✓ Reparación",
+            "✓ Mantenimiento"
+        ]
+    },
+
+    lavavajillas: {
+        icono: "💧",
+        titulo: "Lavavajillas",
+        descripcion: "Mantenimiento y reparación de lavavajillas.",
+        opciones: [
+            "✓ Diagnóstico",
+            "✓ Reparación",
+            "✓ Mantenimiento"
+        ]
+    },
+
+    mantenimiento: {
+        icono: "🔧",
+        titulo: "Mantenimiento",
+        descripcion: "Mantenimiento preventivo para prolongar la vida de tus equipos.",
+        opciones: [
+            "✓ Revisión general",
+            "✓ Mantenimiento preventivo",
+            "✓ Recomendaciones técnicas"
+        ]
     }
 
+};
+
+
+/* =========================================
+   ELEMENTOS
+   ========================================= */
+
+const selectorServicios = document.querySelector(".servicios-selector");
+
+const detalleIcono = document.getElementById("detalleIcono");
+const detalleTitulo = document.getElementById("detalleTitulo");
+const detalleDescripcion = document.getElementById("detalleDescripcion");
+const detalleLista = document.getElementById("detalleLista");
+const detalleWhatsApp = document.getElementById("detalleWhatsApp");
+
+
+/* =========================================
+   MOSTRAR SERVICIO
+   ========================================= */
+
+function mostrarServicio(tipo) {
+
+    const servicio = serviciosLoacon[tipo];
+
+    if (!servicio) {
+        return;
+    }
+
+
+    /* BOTÓN ACTIVO */
+
+    document.querySelectorAll(".servicio-option").forEach(boton => {
+        boton.classList.remove("active");
+    });
+
+    const botonActivo = document.querySelector(
+        `.servicio-option[data-servicio="${tipo}"]`
+    );
+
+    if (botonActivo) {
+        botonActivo.classList.add("active");
+    }
+
+
+    /* INFORMACIÓN */
+
+    detalleIcono.textContent = servicio.icono;
+
+    detalleTitulo.textContent = servicio.titulo;
+
+    detalleDescripcion.textContent = servicio.descripcion;
+
+
+    /* LISTA */
+
+    detalleLista.innerHTML = "";
+
+    servicio.opciones.forEach(opcion => {
+
+        const elemento = document.createElement("div");
+
+        elemento.textContent = opcion;
+
+        detalleLista.appendChild(elemento);
+
+    });
+
+
+    /* =========================================
+       WHATSAPP
+       ========================================= */
+
+    const mensaje =
+        `Hola, me interesa solicitar un servicio para mi ${servicio.titulo.toLowerCase()}. ¿Podrían brindarme información?`;
+
+    detalleWhatsApp.href =
+        `https://wa.me/525538827062?text=${encodeURIComponent(mensaje)}`;
+
+
+    /* ANIMACIÓN */
+
+    const detalle = document.querySelector(".servicio-detalle");
+
+    detalle.style.opacity = "0";
+    detalle.style.transform = "translateY(8px)";
+
+    setTimeout(() => {
+
+        detalle.style.opacity = "1";
+        detalle.style.transform = "translateY(0)";
+
+    }, 120);
+
 }
+
+
+/* =========================================
+   CLIC EN LOS SERVICIOS
+   ========================================= */
+
+/*
+   Usamos un solo evento en el contenedor.
+   Esto evita que alguno de los botones
+   deje de funcionar.
+*/
+
+selectorServicios.addEventListener("click", function(event) {
+
+    const boton = event.target.closest(".servicio-option");
+
+    if (!boton) {
+        return;
+    }
+
+    const tipo = boton.dataset.servicio;
+
+    mostrarServicio(tipo);
+
+});
+
+
+/* =========================================
+   SERVICIO INICIAL
+   ========================================= */
+
+mostrarServicio("refrigeradores");
+
+</script>

@@ -6,6 +6,11 @@
 
     <title>LOACON | Servicio Técnico de Línea Blanca</title>
 
+     <!-- Favicon de LOACON -->
+    <link rel="icon" type="imagenes/png" sizes="32x32" href="imagenes/logo-loacon.png">
+    <link rel="icon" type="imagenes/png" sizes="192x192" href="imagenes/logo-loacon.png">
+    <link rel="apple-touch-icon" href="imagenes/logo-loacon.png">
+
     <meta name="description" content="LOACON - Servicio técnico, mantenimiento y reparación de línea blanca.">
 
     <link rel="stylesheet" href="css/styles.css">
@@ -139,128 +144,100 @@
 <section class="section servicios-section" id="servicios">
 
     <div class="section-heading">
-        <span class="section-label">LO QUE HACEMOS</span>
+
+        <span class="section-label">
+            LO QUE HACEMOS
+        </span>
 
         <h2 class="section-title">
             Servicios de <span>línea blanca</span>
         </h2>
 
         <p class="section-subtitle">
-            Mantenimiento, diagnóstico y reparación para que tus equipos
-            vuelvan a funcionar correctamente.
+            Selecciona el equipo que necesitas atender y conoce nuestro servicio.
         </p>
+
     </div>
 
-    <div class="services">
 
-        <div class="service-card">
+    <!-- SELECTOR DE SERVICIOS -->
 
-            <div class="service-icon">
-                ❄
-            </div>
+    <div class="servicios-selector">
 
-            <h3>Refrigeradores</h3>
+        <button class="servicio-option active" data-servicio="refrigeradores">
+            <span class="servicio-option-icon">❄</span>
+            <span>Refrigeradores</span>
+        </button>
 
-            <p>
+        <button class="servicio-option" data-servicio="lavadoras">
+            <span class="servicio-option-icon">🧺</span>
+            <span>Lavadoras</span>
+        </button>
+
+        <button class="servicio-option" data-servicio="estufas">
+            <span class="servicio-option-icon">🔥</span>
+            <span>Estufas y hornos</span>
+        </button>
+
+        <button class="servicio-option" data-servicio="secadoras">
+            <span class="servicio-option-icon">🌬️</span>
+            <span>Secadoras</span>
+        </button>
+
+        <button class="servicio-option" data-servicio="lavavajillas">
+            <span class="servicio-option-icon">💧</span>
+            <span>Lavavajillas</span>
+        </button>
+
+        <button class="servicio-option" data-servicio="mantenimiento">
+            <span class="servicio-option-icon">🔧</span>
+            <span>Mantenimiento</span>
+        </button>
+
+    </div>
+
+
+    <!-- DETALLE DINÁMICO -->
+
+    <div class="servicio-detalle" id="servicioDetalle">
+
+        <div class="servicio-detalle-icon" id="detalleIcono">
+            ❄
+        </div>
+
+
+        <div class="servicio-detalle-content">
+
+            <span class="detalle-label">
+                SERVICIO LOACON
+            </span>
+
+            <h3 id="detalleTitulo">
+                Refrigeradores
+            </h3>
+
+            <p id="detalleDescripcion">
                 Diagnóstico, reparación y mantenimiento de refrigeradores.
             </p>
 
-            <a href="#contacto">
-                Solicitar servicio →
-            </a>
 
-        </div>
+            <div class="detalle-lista" id="detalleLista">
 
+                <div>✓ Diagnóstico de fallas</div>
 
-        <div class="service-card">
+                <div>✓ Mantenimiento preventivo</div>
 
-            <div class="service-icon">
-                🧺
+                <div>✓ Reparación</div>
+
             </div>
 
-            <h3>Lavadoras</h3>
 
-            <p>
-                Reparación de fallas, mantenimiento y revisión general.
-            </p>
-
-            <a href="#contacto">
-                Solicitar servicio →
-            </a>
-
-        </div>
-
-
-        <div class="service-card">
-
-            <div class="service-icon">
-                🔥
-            </div>
-
-            <h3>Estufas y hornos</h3>
-
-            <p>
-                Servicio técnico para estufas, hornos y equipos de cocina.
-            </p>
-
-            <a href="#contacto">
-                Solicitar servicio →
-            </a>
-
-        </div>
-
-
-        <div class="service-card">
-
-            <div class="service-icon">
-                🌬️
-            </div>
-
-            <h3>Secadoras</h3>
-
-            <p>
-                Diagnóstico y reparación de secadoras domésticas.
-            </p>
-
-            <a href="#contacto">
-                Solicitar servicio →
-            </a>
-
-        </div>
-
-
-        <div class="service-card">
-
-            <div class="service-icon">
-                💧
-            </div>
-
-            <h3>Lavavajillas</h3>
-
-            <p>
-                Mantenimiento y reparación de lavavajillas.
-            </p>
-
-            <a href="#contacto">
-                Solicitar servicio →
-            </a>
-
-        </div>
-
-
-        <div class="service-card">
-
-            <div class="service-icon">
-                🔧
-            </div>
-
-            <h3>Mantenimiento</h3>
-
-            <p>
-                Mantenimiento preventivo para prolongar la vida de tus equipos.
-            </p>
-
-            <a href="#contacto">
+            <a
+                href="#"
+                id="detalleWhatsApp"
+                class="btn-detalle-servicio"
+                target="_blank"
+            >
                 Solicitar servicio →
             </a>
 
@@ -354,7 +331,191 @@
         </p>
 
     </footer>
+<script>
+/* =========================================
+   SERVICIOS DINÁMICOS LOACON
+   ========================================= */
 
+const serviciosLoacon = {
+
+    refrigeradores: {
+        icono: "❄",
+        titulo: "Refrigeradores",
+        descripcion: "Diagnóstico, reparación y mantenimiento de refrigeradores.",
+        opciones: [
+            "✓ Diagnóstico de fallas",
+            "✓ Mantenimiento preventivo",
+            "✓ Reparación"
+        ]
+    },
+
+    lavadoras: {
+        icono: "🧺",
+        titulo: "Lavadoras",
+        descripcion: "Reparación de fallas, mantenimiento y revisión general.",
+        opciones: [
+            "✓ Diagnóstico",
+            "✓ Reparación",
+            "✓ Mantenimiento"
+        ]
+    },
+
+    estufas: {
+        icono: "🔥",
+        titulo: "Estufas y hornos",
+        descripcion: "Servicio técnico para estufas, hornos y equipos de cocina.",
+        opciones: [
+            "✓ Diagnóstico",
+            "✓ Reparación",
+            "✓ Mantenimiento"
+        ]
+    },
+
+    secadoras: {
+        icono: "🌬️",
+        titulo: "Secadoras",
+        descripcion: "Diagnóstico y reparación de secadoras domésticas.",
+        opciones: [
+            "✓ Diagnóstico",
+            "✓ Reparación",
+            "✓ Mantenimiento"
+        ]
+    },
+
+    lavavajillas: {
+        icono: "💧",
+        titulo: "Lavavajillas",
+        descripcion: "Mantenimiento y reparación de lavavajillas.",
+        opciones: [
+            "✓ Diagnóstico",
+            "✓ Reparación",
+            "✓ Mantenimiento"
+        ]
+    },
+
+    mantenimiento: {
+        icono: "🔧",
+        titulo: "Mantenimiento",
+        descripcion: "Mantenimiento preventivo para prolongar la vida de tus equipos.",
+        opciones: [
+            "✓ Revisión general",
+            "✓ Mantenimiento preventivo",
+            "✓ Recomendaciones técnicas"
+        ]
+    }
+
+};
+
+
+/* =========================================
+   ELEMENTOS
+   ========================================= */
+
+const detalleIcono = document.getElementById("detalleIcono");
+const detalleTitulo = document.getElementById("detalleTitulo");
+const detalleDescripcion = document.getElementById("detalleDescripcion");
+const detalleLista = document.getElementById("detalleLista");
+const detalleWhatsApp = document.getElementById("detalleWhatsApp");
+
+
+/* =========================================
+   MOSTRAR SERVICIO
+   ========================================= */
+
+function mostrarServicio(tipo) {
+
+    const servicio = serviciosLoacon[tipo];
+
+    if (!servicio) return;
+
+
+    /* BOTÓN ACTIVO */
+
+    document.querySelectorAll(".servicio-option").forEach(boton => {
+        boton.classList.remove("active");
+    });
+
+    const botonActivo = document.querySelector(
+        `.servicio-option[data-servicio="${tipo}"]`
+    );
+
+    if (botonActivo) {
+        botonActivo.classList.add("active");
+    }
+
+
+    /* CAMBIAR INFORMACIÓN */
+
+    detalleIcono.textContent = servicio.icono;
+
+    detalleTitulo.textContent = servicio.titulo;
+
+    detalleDescripcion.textContent = servicio.descripcion;
+
+
+    /* CAMBIAR LISTA */
+
+    detalleLista.innerHTML = "";
+
+    servicio.opciones.forEach(opcion => {
+
+        const elemento = document.createElement("div");
+
+        elemento.textContent = opcion;
+
+        detalleLista.appendChild(elemento);
+
+    });
+
+
+    /* =========================================
+       WHATSAPP
+       ========================================= */
+
+    const mensaje =
+        `Hola, me interesa solicitar un servicio para mi ${servicio.titulo}. ¿Podrían brindarme información?`;
+
+    detalleWhatsApp.href =
+        `https://wa.me/525538827062?text=${encodeURIComponent(mensaje)}`;
+
+
+    /* ANIMACIÓN */
+
+    const detalle = document.getElementById("servicioDetalle");
+
+    detalle.style.opacity = "0";
+    detalle.style.transform = "translateY(8px)";
+
+    setTimeout(() => {
+        detalle.style.opacity = "1";
+        detalle.style.transform = "translateY(0)";
+    }, 120);
+
+}
+
+
+/* =========================================
+   CLIC EN LOS SERVICIOS
+   ========================================= */
+
+document.querySelector(".servicios-selector").addEventListener("click", function(event) {
+
+    const boton = event.target.closest(".servicio-option");
+
+    if (!boton) return;
+
+    mostrarServicio(boton.dataset.servicio);
+
+});
+
+
+/* =========================================
+   INICIO
+   ========================================= */
+
+mostrarServicio("refrigeradores");
+
+</script>
 
 </body>
 </html>
