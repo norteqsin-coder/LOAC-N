@@ -117,7 +117,7 @@
         </div>
 
         <div class="marca-circle">
-            <img src="imagenes/marcas/lg.png" alt="LG">
+            <img src="imagenes/marcas/LogoLG.png" alt="LG">
         </div>
 
         <div class="marca-circle">
@@ -129,7 +129,7 @@
         </div>
 
         <div class="marca-circle">
-            <img src="imagenes/marcas/whirlpool.png" alt="Whirlpool">
+            <img src="imagenes/marcas/LogoWhirlpool.png" alt="Whirlpool">
         </div>
 
         <div class="marca-circle">
@@ -160,90 +160,140 @@
     </div>
 
 
-    <!-- SELECTOR DE SERVICIOS -->
-
     <div class="servicios-selector">
 
-        <button class="servicio-option active" data-servicio="refrigeradores">
-            <span class="servicio-option-icon">❄</span>
-            <span>Refrigeradores</span>
-        </button>
+    <button type="button"
+            class="servicio-option active"
+            data-servicio="refrigeradores">
 
-        <button class="servicio-option" data-servicio="lavadoras">
-            <span class="servicio-option-icon">🧺</span>
-            <span>Lavadoras</span>
-        </button>
+        <span class="servicio-option-icon">
+            <img src="imagenes/servicios/refrigeradores.png"
+                 alt="Refrigeradores">
+        </span>
 
-        <button class="servicio-option" data-servicio="estufas">
-            <span class="servicio-option-icon">🔥</span>
-            <span>Estufas y hornos</span>
-        </button>
+        <span>Refrigeradores</span>
+    </button>
 
-        <button class="servicio-option" data-servicio="secadoras">
-            <span class="servicio-option-icon">🌬️</span>
-            <span>Secadoras</span>
-        </button>
 
-        <button class="servicio-option" data-servicio="lavavajillas">
-            <span class="servicio-option-icon">💧</span>
-            <span>Lavavajillas</span>
-        </button>
+    <button type="button"
+            class="servicio-option"
+            data-servicio="lavadoras">
 
-        <button class="servicio-option" data-servicio="mantenimiento">
-            <span class="servicio-option-icon">🔧</span>
-            <span>Mantenimiento</span>
-        </button>
+        <span class="servicio-option-icon">
+            <img src="imagenes/servicios/lavadora.png"
+                 alt="Lavadoras">
+        </span>
 
-    </div>
+        <span>Lavadoras</span>
+    </button>
+
+
+    <button type="button"
+            class="servicio-option"
+            data-servicio="estufas">
+
+        <span class="servicio-option-icon">
+            <img src="imagenes/servicios/estufa.png"
+                 alt="Estufas y hornos">
+        </span>
+
+        <span>Estufas y hornos</span>
+    </button>
+
+
+    <button type="button"
+            class="servicio-option"
+            data-servicio="secadoras">
+
+        <span class="servicio-option-icon">
+            <img src="imagenes/servicios/secadora.png"
+                 alt="Secadoras">
+        </span>
+
+        <span>Secadoras</span>
+    </button>
+
+
+    <button type="button"
+            class="servicio-option"
+            data-servicio="lavavajillas">
+
+        <span class="servicio-option-icon">
+            <img src="imagenes/servicios/mantenimiento.png"
+                 alt="Lavavajillas">
+        </span>
+
+        <span>Lavavajillas</span>
+    </button>
+
+
+    <button type="button"
+            class="servicio-option"
+            data-servicio="mantenimiento">
+
+        <span class="servicio-option-icon">
+            <img src="imagenes/servicios/mantenimiento.png"
+                 alt="Mantenimiento">
+        </span>
+
+        <span>Mantenimiento</span>
+    </button>
+
+</div>
 
 
     <!-- DETALLE DINÁMICO -->
 
-    <div class="servicio-detalle" id="servicioDetalle">
+<div class="servicio-detalle" id="servicioDetalle">
 
-        <div class="servicio-detalle-icon" id="detalleIcono">
-            ❄
-        </div>
-
-
-        <div class="servicio-detalle-content">
-
-            <span class="detalle-label">
-                SERVICIO LOACON
-            </span>
-
-            <h3 id="detalleTitulo">
-                Refrigeradores
-            </h3>
-
-            <p id="detalleDescripcion">
-                Diagnóstico, reparación y mantenimiento de refrigeradores.
-            </p>
+    <div class="servicio-detalle-icon">
+        <img
+            id="detalleImagen"
+            src="imagenes/servicios/refrigeradores.png"
+            alt="Refrigeradores"
+        >
+    </div>
 
 
-            <div class="detalle-lista" id="detalleLista">
+    <div class="servicio-detalle-content">
 
-                <div>✓ Diagnóstico de fallas</div>
+        <span class="detalle-label">
+            SERVICIO LOACON
+        </span>
 
-                <div>✓ Mantenimiento preventivo</div>
+        <h3 id="detalleTitulo">
+            Refrigeradores
+        </h3>
 
-                <div>✓ Reparación</div>
+        <p id="detalleDescripcion">
+            Diagnóstico, reparación y mantenimiento de refrigeradores.
+        </p>
 
-            </div>
 
+        <div class="detalle-lista" id="detalleLista">
 
-            <a
-                href="#"
-                id="detalleWhatsApp"
-                class="btn-detalle-servicio"
-                target="_blank"
-            >
-                Solicitar servicio →
-            </a>
+            <div>✓ Diagnóstico de fallas</div>
+
+            <div>✓ Mantenimiento preventivo</div>
+
+            <div>✓ Reparación</div>
 
         </div>
+
+
+        <a
+            href="https://wa.me/525538827062"
+            id="detalleWhatsApp"
+            class="btn-detalle-servicio"
+            target="_blank"
+            rel="noopener"
+        >
+            Solicitar servicio →
+        </a>
 
     </div>
+
+</div>
 
 </section>
 
@@ -331,191 +381,7 @@
         </p>
 
     </footer>
-<script>
-/* =========================================
-   SERVICIOS DINÁMICOS LOACON
-   ========================================= */
-
-const serviciosLoacon = {
-
-    refrigeradores: {
-        icono: "❄",
-        titulo: "Refrigeradores",
-        descripcion: "Diagnóstico, reparación y mantenimiento de refrigeradores.",
-        opciones: [
-            "✓ Diagnóstico de fallas",
-            "✓ Mantenimiento preventivo",
-            "✓ Reparación"
-        ]
-    },
-
-    lavadoras: {
-        icono: "🧺",
-        titulo: "Lavadoras",
-        descripcion: "Reparación de fallas, mantenimiento y revisión general.",
-        opciones: [
-            "✓ Diagnóstico",
-            "✓ Reparación",
-            "✓ Mantenimiento"
-        ]
-    },
-
-    estufas: {
-        icono: "🔥",
-        titulo: "Estufas y hornos",
-        descripcion: "Servicio técnico para estufas, hornos y equipos de cocina.",
-        opciones: [
-            "✓ Diagnóstico",
-            "✓ Reparación",
-            "✓ Mantenimiento"
-        ]
-    },
-
-    secadoras: {
-        icono: "🌬️",
-        titulo: "Secadoras",
-        descripcion: "Diagnóstico y reparación de secadoras domésticas.",
-        opciones: [
-            "✓ Diagnóstico",
-            "✓ Reparación",
-            "✓ Mantenimiento"
-        ]
-    },
-
-    lavavajillas: {
-        icono: "💧",
-        titulo: "Lavavajillas",
-        descripcion: "Mantenimiento y reparación de lavavajillas.",
-        opciones: [
-            "✓ Diagnóstico",
-            "✓ Reparación",
-            "✓ Mantenimiento"
-        ]
-    },
-
-    mantenimiento: {
-        icono: "🔧",
-        titulo: "Mantenimiento",
-        descripcion: "Mantenimiento preventivo para prolongar la vida de tus equipos.",
-        opciones: [
-            "✓ Revisión general",
-            "✓ Mantenimiento preventivo",
-            "✓ Recomendaciones técnicas"
-        ]
-    }
-
-};
-
-
-/* =========================================
-   ELEMENTOS
-   ========================================= */
-
-const detalleIcono = document.getElementById("detalleIcono");
-const detalleTitulo = document.getElementById("detalleTitulo");
-const detalleDescripcion = document.getElementById("detalleDescripcion");
-const detalleLista = document.getElementById("detalleLista");
-const detalleWhatsApp = document.getElementById("detalleWhatsApp");
-
-
-/* =========================================
-   MOSTRAR SERVICIO
-   ========================================= */
-
-function mostrarServicio(tipo) {
-
-    const servicio = serviciosLoacon[tipo];
-
-    if (!servicio) return;
-
-
-    /* BOTÓN ACTIVO */
-
-    document.querySelectorAll(".servicio-option").forEach(boton => {
-        boton.classList.remove("active");
-    });
-
-    const botonActivo = document.querySelector(
-        `.servicio-option[data-servicio="${tipo}"]`
-    );
-
-    if (botonActivo) {
-        botonActivo.classList.add("active");
-    }
-
-
-    /* CAMBIAR INFORMACIÓN */
-
-    detalleIcono.textContent = servicio.icono;
-
-    detalleTitulo.textContent = servicio.titulo;
-
-    detalleDescripcion.textContent = servicio.descripcion;
-
-
-    /* CAMBIAR LISTA */
-
-    detalleLista.innerHTML = "";
-
-    servicio.opciones.forEach(opcion => {
-
-        const elemento = document.createElement("div");
-
-        elemento.textContent = opcion;
-
-        detalleLista.appendChild(elemento);
-
-    });
-
-
-    /* =========================================
-       WHATSAPP
-       ========================================= */
-
-    const mensaje =
-        `Hola, me interesa solicitar un servicio para mi ${servicio.titulo}. ¿Podrían brindarme información?`;
-
-    detalleWhatsApp.href =
-        `https://wa.me/525538827062?text=${encodeURIComponent(mensaje)}`;
-
-
-    /* ANIMACIÓN */
-
-    const detalle = document.getElementById("servicioDetalle");
-
-    detalle.style.opacity = "0";
-    detalle.style.transform = "translateY(8px)";
-
-    setTimeout(() => {
-        detalle.style.opacity = "1";
-        detalle.style.transform = "translateY(0)";
-    }, 120);
-
-}
-
-
-/* =========================================
-   CLIC EN LOS SERVICIOS
-   ========================================= */
-
-document.querySelector(".servicios-selector").addEventListener("click", function(event) {
-
-    const boton = event.target.closest(".servicio-option");
-
-    if (!boton) return;
-
-    mostrarServicio(boton.dataset.servicio);
-
-});
-
-
-/* =========================================
-   INICIO
-   ========================================= */
-
-mostrarServicio("refrigeradores");
-
-</script>
+    <script src="script.js"></script>
 
 </body>
 </html>

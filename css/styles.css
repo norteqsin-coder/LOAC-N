@@ -1364,204 +1364,1070 @@ header .btn-servicio:active {
 
     box-shadow: 0 9px 20px rgba(18, 97, 160, 0.3);
 }
-<script>
-/* =========================================
-   SERVICIOS DINÁMICOS LOACON
-   ========================================= */
 
-const serviciosLoacon = {
+/* =====================================================
+   LOACON - HEADER Y HERO
+===================================================== */
 
-    refrigeradores: {
-        icono: "❄",
-        titulo: "Refrigeradores",
-        descripcion: "Diagnóstico, reparación y mantenimiento de refrigeradores.",
-        opciones: [
-            "✓ Diagnóstico de fallas",
-            "✓ Mantenimiento preventivo",
-            "✓ Reparación"
-        ]
-    },
-
-    lavadoras: {
-        icono: "🧺",
-        titulo: "Lavadoras",
-        descripcion: "Reparación de fallas, mantenimiento y revisión general.",
-        opciones: [
-            "✓ Diagnóstico",
-            "✓ Reparación",
-            "✓ Mantenimiento"
-        ]
-    },
-
-    estufas: {
-        icono: "🔥",
-        titulo: "Estufas y hornos",
-        descripcion: "Servicio técnico para estufas, hornos y equipos de cocina.",
-        opciones: [
-            "✓ Diagnóstico",
-            "✓ Reparación",
-            "✓ Mantenimiento"
-        ]
-    },
-
-    secadoras: {
-        icono: "🌬️",
-        titulo: "Secadoras",
-        descripcion: "Diagnóstico y reparación de secadoras domésticas.",
-        opciones: [
-            "✓ Diagnóstico",
-            "✓ Reparación",
-            "✓ Mantenimiento"
-        ]
-    },
-
-    lavavajillas: {
-        icono: "💧",
-        titulo: "Lavavajillas",
-        descripcion: "Mantenimiento y reparación de lavavajillas.",
-        opciones: [
-            "✓ Diagnóstico",
-            "✓ Reparación",
-            "✓ Mantenimiento"
-        ]
-    },
-
-    mantenimiento: {
-        icono: "🔧",
-        titulo: "Mantenimiento",
-        descripcion: "Mantenimiento preventivo para prolongar la vida de tus equipos.",
-        opciones: [
-            "✓ Revisión general",
-            "✓ Mantenimiento preventivo",
-            "✓ Recomendaciones técnicas"
-        ]
-    }
-
-};
-
-
-/* =========================================
-   ELEMENTOS
-   ========================================= */
-
-const selectorServicios = document.querySelector(".servicios-selector");
-
-const detalleIcono = document.getElementById("detalleIcono");
-const detalleTitulo = document.getElementById("detalleTitulo");
-const detalleDescripcion = document.getElementById("detalleDescripcion");
-const detalleLista = document.getElementById("detalleLista");
-const detalleWhatsApp = document.getElementById("detalleWhatsApp");
-
-
-/* =========================================
-   MOSTRAR SERVICIO
-   ========================================= */
-
-function mostrarServicio(tipo) {
-
-    const servicio = serviciosLoacon[tipo];
-
-    if (!servicio) {
-        return;
-    }
-
-
-    /* BOTÓN ACTIVO */
-
-    document.querySelectorAll(".servicio-option").forEach(boton => {
-        boton.classList.remove("active");
-    });
-
-    const botonActivo = document.querySelector(
-        `.servicio-option[data-servicio="${tipo}"]`
-    );
-
-    if (botonActivo) {
-        botonActivo.classList.add("active");
-    }
-
-
-    /* INFORMACIÓN */
-
-    detalleIcono.textContent = servicio.icono;
-
-    detalleTitulo.textContent = servicio.titulo;
-
-    detalleDescripcion.textContent = servicio.descripcion;
-
-
-    /* LISTA */
-
-    detalleLista.innerHTML = "";
-
-    servicio.opciones.forEach(opcion => {
-
-        const elemento = document.createElement("div");
-
-        elemento.textContent = opcion;
-
-        detalleLista.appendChild(elemento);
-
-    });
-
-
-    /* =========================================
-       WHATSAPP
-       ========================================= */
-
-    const mensaje =
-        `Hola, me interesa solicitar un servicio para mi ${servicio.titulo.toLowerCase()}. ¿Podrían brindarme información?`;
-
-    detalleWhatsApp.href =
-        `https://wa.me/525538827062?text=${encodeURIComponent(mensaje)}`;
-
-
-    /* ANIMACIÓN */
-
-    const detalle = document.querySelector(".servicio-detalle");
-
-    detalle.style.opacity = "0";
-    detalle.style.transform = "translateY(8px)";
-
-    setTimeout(() => {
-
-        detalle.style.opacity = "1";
-        detalle.style.transform = "translateY(0)";
-
-    }, 120);
-
+:root {
+    --loacon-blue: #1269a9;
+    --loacon-blue-dark: #123f68;
+    --loacon-blue-light: #168de0;
+    --loacon-green: #43c65a;
+    --loacon-text: #123f68;
+    --loacon-gray: #647585;
 }
 
 
-/* =========================================
-   CLIC EN LOS SERVICIOS
-   ========================================= */
+/* =====================================================
+   BARRA SUPERIOR
+===================================================== */
 
-/*
-   Usamos un solo evento en el contenedor.
-   Esto evita que alguno de los botones
-   deje de funcionar.
-*/
+.top-contact {
+    width: 100%;
+    min-height: 72px;
 
-selectorServicios.addEventListener("click", function(event) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    const boton = event.target.closest(".servicio-option");
+    gap: 28px;
 
-    if (!boton) {
-        return;
+    padding: 10px 5%;
+
+    background: linear-gradient(
+        90deg,
+        #07579b,
+        #0875c1
+    );
+
+    color: white;
+}
+
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding-right: 28px;
+
+    border-right: 1px solid rgba(255,255,255,.3);
+}
+
+
+.contact-icon {
+    font-size: 26px;
+}
+
+
+.contact-item strong,
+.coverage-contact strong {
+    display: block;
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+.contact-item small,
+.coverage-contact small {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 13px;
+
+    opacity: .9;
+}
+
+
+/* =====================================================
+   REDES
+===================================================== */
+
+.social-contact {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    white-space: nowrap;
+}
+
+
+.social-contact > span {
+    font-size: 14px;
+}
+
+
+.social-contact a {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: white;
+
+    color: var(--loacon-blue);
+
+    text-decoration: none;
+
+    font-size: 21px;
+    font-weight: 700;
+
+    transition: .2s;
+}
+
+
+.social-contact a:hover {
+    transform: translateY(-3px);
+}
+
+
+.coverage-contact {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.main-header {
+    height: 105px;
+
+    background: white;
+
+    border-bottom: 1px solid #dce4ea;
+
+    position: relative;
+    z-index: 20;
+}
+
+
+.header-container {
+    width: min(1650px, 94%);
+
+    height: 100%;
+
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* LOGO */
+
+.logo {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+}
+
+
+.logo img {
+    width: 180px;
+    max-height: 100px;
+
+    object-fit: contain;
+}
+
+
+/* NAV */
+
+.main-nav {
+    display: flex;
+    align-items: center;
+
+    gap: 48px;
+}
+
+
+.main-nav a {
+    position: relative;
+
+    color: var(--loacon-text);
+
+    text-decoration: none;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    padding: 40px 0 35px;
+
+    transition: .2s;
+}
+
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--loacon-blue);
+}
+
+
+.main-nav a.active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 24px;
+
+    height: 3px;
+
+    background: var(--loacon-blue);
+}
+
+
+/* BOTÓN HEADER */
+
+.header-button {
+    background: var(--loacon-blue);
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 16px 27px;
+
+    border-radius: 9px;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    box-shadow: 0 5px 12px rgba(18,105,169,.25);
+
+    transition: .2s;
+}
+
+
+.header-button:hover {
+    background: var(--loacon-blue-dark);
+
+    transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero-loacon {
+    position: relative;
+
+    overflow: hidden;
+
+    background: white;
+
+    min-height: 700px;
+}
+
+
+.hero-container {
+    width: min(1650px, 94%);
+
+    min-height: 560px;
+
+    margin: auto;
+
+    display: flex;
+
+    position: relative;
+}
+
+
+.hero-content {
+    width: 48%;
+
+    padding:
+
+        80px
+
+        0
+
+        70px
+
+        25px;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+
+.hero-label {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color: var(--loacon-blue);
+
+    font-size: 17px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+.hero-label::after {
+    content: "";
+
+    width: 45px;
+
+    height: 2px;
+
+    background: var(--loacon-blue);
+}
+
+
+/* =====================================================
+   TITULO
+===================================================== */
+
+.hero-content h1 {
+    margin: 20px 0 18px;
+
+    color: var(--loacon-text);
+
+    font-size: clamp(48px, 4.2vw, 76px);
+
+    line-height: .98;
+
+    font-weight: 800;
+}
+
+
+.hero-content h1 span {
+    display: block;
+
+    color: #0874c2;
+
+    font-family: "Brush Script MT", "Segoe Script", cursive;
+
+    font-size: 1.05em;
+
+    font-weight: 600;
+
+    margin-top: 8px;
+}
+
+
+.hero-description {
+    max-width: 720px;
+
+    margin: 0 0 30px;
+
+    color: #3f5b70;
+
+    font-size: 20px;
+
+    line-height: 1.45;
+}
+
+
+/* =====================================================
+   BOTONES
+===================================================== */
+
+.hero-buttons {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
+}
+
+
+.hero-buttons a {
+    min-height: 56px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    padding: 0 25px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    transition: .2s;
+}
+
+
+.btn-primary {
+    background: var(--loacon-blue);
+
+    color: white;
+
+    box-shadow: 0 5px 12px rgba(18,105,169,.2);
+}
+
+
+.btn-primary:hover {
+    background: var(--loacon-blue-dark);
+
+    transform: translateY(-2px);
+}
+
+
+.btn-whatsapp {
+    background: var(--loacon-green);
+
+    color: white;
+}
+
+
+.btn-whatsapp:hover {
+    background: #35ad4b;
+
+    transform: translateY(-2px);
+}
+
+
+.btn-call {
+    background: white;
+
+    color: var(--loacon-blue);
+
+    border: 2px solid var(--loacon-blue);
+}
+
+
+.btn-call:hover {
+    background: #f2f8fc;
+}
+
+
+/* =====================================================
+   BENEFICIOS
+===================================================== */
+
+.hero-benefits {
+    display: flex;
+
+    gap: 20px;
+
+    margin-top: 30px;
+
+    flex-wrap: wrap;
+}
+
+
+.benefit {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 190px;
+}
+
+
+.benefit-icon {
+    width: 35px;
+    height: 35px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--loacon-blue);
+
+    color: white;
+
+    font-size: 18px;
+}
+
+
+.benefit strong {
+    display: block;
+
+    color: var(--loacon-text);
+
+    font-size: 14px;
+}
+
+
+.benefit small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #6c7f8d;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   IMAGEN HERO
+===================================================== */
+
+.hero-image {
+    width: 58%;
+
+    position: absolute;
+
+    right: -4%;
+
+    top: 0;
+
+    bottom: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    z-index: 2;
+}
+
+
+.hero-image::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            white 0%,
+            rgba(255,255,255,.75) 15%,
+            transparent 45%
+        );
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+
+.hero-image img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    display: block;
+}
+
+
+/* =====================================================
+   BARRA DE SERVICIOS
+===================================================== */
+
+.hero-services {
+    width: min(1550px, 92%);
+
+    min-height: 120px;
+
+    margin: -30px auto 0;
+
+    position: relative;
+
+    z-index: 10;
+
+    background: rgba(255,255,255,.96);
+
+    border: 1px solid #e0e8ee;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 30px rgba(30,80,110,.12);
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 20px 25px;
+
+    gap: 20px;
+}
+
+
+.hero-service {
+    flex: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding-right: 20px;
+
+    border-right: 1px solid #dce4ea;
+}
+
+
+.service-icon {
+    width: 52px;
+    height: 52px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #edf6fc;
+
+    color: var(--loacon-blue);
+
+    font-size: 24px;
+}
+
+
+.hero-service strong {
+    display: block;
+
+    color: var(--loacon-text);
+
+    font-size: 16px;
+}
+
+
+.hero-service small {
+    display: block;
+
+    max-width: 160px;
+
+    margin-top: 4px;
+
+    color: #687d8c;
+
+    font-size: 12px;
+
+    line-height: 1.3;
+}
+
+
+/* =====================================================
+   TIPOS DE ELECTRODOMÉSTICOS
+===================================================== */
+
+.appliance-types {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-around;
+
+    flex: 1.5;
+
+    gap: 10px;
+}
+
+
+.appliance-types div {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 5px;
+
+    color: var(--loacon-blue);
+}
+
+
+.appliance-types span {
+    font-size: 28px;
+}
+
+
+.appliance-types small {
+    color: #536a79;
+
+    font-size: 12px;
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1100px) {
+
+    .top-contact {
+        gap: 15px;
     }
 
-    const tipo = boton.dataset.servicio;
+    .contact-item {
+        padding-right: 15px;
+    }
 
-    mostrarServicio(tipo);
+    .contact-item strong,
+    .coverage-contact strong {
+        font-size: 13px;
+    }
 
-});
+    .main-nav {
+        gap: 25px;
+    }
+
+    .main-nav a {
+        font-size: 16px;
+    }
+
+    .hero-content {
+        width: 55%;
+    }
+
+    .hero-image {
+        width: 60%;
+        right: -10%;
+    }
+
+    .hero-services {
+        flex-wrap: wrap;
+    }
+
+    .hero-service {
+        min-width: 200px;
+    }
+
+    .appliance-types {
+        width: 100%;
+        flex: 100%;
+        padding-top: 15px;
+    }
+}
 
 
-/* =========================================
-   SERVICIO INICIAL
-   ========================================= */
+/* =====================================================
+   CELULAR
+===================================================== */
 
-mostrarServicio("refrigeradores");
+@media (max-width: 768px) {
 
-</script>
+    /* BARRA CONTACTO */
+
+    .top-contact {
+        display: none;
+    }
+
+
+    /* HEADER */
+
+    .main-header {
+        height: 75px;
+    }
+
+
+    .header-container {
+        width: 92%;
+    }
+
+
+    .logo img {
+        width: 125px;
+    }
+
+
+    .main-nav {
+        display: none;
+    }
+
+
+    .header-button {
+        padding: 11px 15px;
+
+        font-size: 13px;
+    }
+
+
+    /* HERO */
+
+    .hero-loacon {
+        min-height: auto;
+    }
+
+
+    .hero-container {
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        min-height: auto;
+    }
+
+
+    .hero-content {
+        width: 100%;
+
+        padding:
+            45px
+            25px
+            30px;
+
+        text-align: left;
+    }
+
+
+    .hero-label {
+        font-size: 12px;
+
+        letter-spacing: 1.5px;
+    }
+
+
+    .hero-content h1 {
+        font-size: 42px;
+
+        line-height: 1;
+    }
+
+
+    .hero-content h1 span {
+        font-size: 1.05em;
+    }
+
+
+    .hero-description {
+        font-size: 16px;
+
+        margin-bottom: 25px;
+    }
+
+
+    .hero-buttons {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .hero-buttons a {
+        width: 100%;
+
+        min-height: 52px;
+    }
+
+
+    .hero-benefits {
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+
+    /* IMAGEN */
+
+    .hero-image {
+        position: relative;
+
+        width: 100%;
+
+        height: 390px;
+
+        right: auto;
+
+        top: auto;
+
+        bottom: auto;
+
+        order: 2;
+    }
+
+
+    .hero-image img {
+        object-fit: cover;
+
+        object-position: center;
+    }
+
+
+    .hero-image::before {
+        background:
+            linear-gradient(
+                180deg,
+                white 0%,
+                rgba(255,255,255,.15) 30%,
+                transparent 60%
+            );
+    }
+
+
+    /* SERVICIOS */
+
+    .hero-services {
+        width: 92%;
+
+        margin: -20px auto 30px;
+
+        padding: 20px;
+
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+
+    .hero-service {
+        border-right: none;
+
+        border-bottom: 1px solid #e2e8ed;
+
+        padding:
+            0
+            0
+            15px;
+    }
+
+
+    .appliance-types {
+        display: grid;
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 18px;
+
+        padding-top: 5px;
+    }
+
+}
+/* =====================================================
+   IMÁGENES DE SERVICIOS
+===================================================== */
+
+.servicio-option-icon {
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #edf5fb;
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    margin-bottom: 10px;
+}
+
+.servicio-option-icon img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+/* =====================================================
+   IMAGEN DEL DETALLE
+===================================================== */
+
+.servicio-detalle-icon {
+    width: 160px;
+    height: 160px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #edf5fb;
+
+    border: 1px solid #d8e8f3;
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    flex-shrink: 0;
+}
+
+.servicio-detalle-icon img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+
+    padding: 10px;
+}
+/* =====================================================
+   IMAGEN DEL SERVICIO SELECCIONADO
+===================================================== */
+
+.servicio-detalle-icon {
+    width: 160px;
+    height: 160px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #edf5fb;
+    border: 1px solid #d8e8f3;
+    border-radius: 22px;
+
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.servicio-detalle-icon img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    padding: 10px;
+
+    display: block;
+}
