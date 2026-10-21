@@ -2686,10 +2686,10 @@ header .btn-servicio:active {
     }
 
     .logo img {
-        width: 105px !important;
-        max-width: 105px;
+        width: 135px !important;
+        max-width: 135px;
         height: auto;
-        max-height: 65px;
+        max-height: 75px;
         transform: none !important;
     }
 
@@ -3321,5 +3321,27 @@ header .btn-servicio:active {
     /* IMAGEN DEL HERO */
     .hero-image {
         height: 250px !important;
+    }
+}
+
+/* =====================================================
+   LOGOS DE MARCAS - MÓVIL
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+    .brands-grid img,
+    .brand-card img,
+    .brand-logo img {
+        width: 85% !important;
+        max-width: 150px !important;
+        height: auto !important;
+        max-height: 75px !important;
+        object-fit: contain !important;
+    }
+
+    .brands-grid,
+    .brand-card {
+        min-height: 115px !important;
     }
 }
