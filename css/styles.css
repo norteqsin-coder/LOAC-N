@@ -2668,41 +2668,70 @@ header .btn-servicio:active {
 
 @media (max-width: 900px) {
 
-    html,
-    body {
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
-    }
-
-    /* =========================
-       BARRA SUPERIOR
-    ========================= */
-
     .top-bar {
         height: 42px;
         min-height: 42px;
+        width: 100%;
         padding: 0 10px;
-        justify-content: center;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        box-sizing: border-box;
     }
 
     .top-bar-left {
-        width: 100%;
-        justify-content: center;
+        width: auto;
+        flex: 1;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        overflow: hidden;
     }
 
     .top-location {
         min-width: 0;
-        font-size: 12px;
-        text-align: center;
+
+        font-size: 11px;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .top-bar-left span:not(:first-child),
-    .top-bar-left a,
-    .top-bar-social {
+    .top-bar-left a {
         display: none !important;
     }
 
+    .top-bar-social {
+        display: flex !important;
+
+        align-items: center;
+
+        gap: 8px;
+
+        margin-left: 8px;
+        margin-right: 0;
+
+        flex-shrink: 0;
+    }
+
+    .top-bar-social .social-icon img {
+        width: 25px;
+        height: 25px;
+
+        display: block;
+        object-fit: contain;
+    }
+
+    .top-bar-social .top-separator {
+        font-size: 15px;
+    }
+}
 
     /* =========================
        HEADER
