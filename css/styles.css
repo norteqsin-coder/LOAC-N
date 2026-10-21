@@ -2626,3 +2626,39 @@ header .btn-servicio:active {
     }
 
 }
+/* =========================================
+   BARRA SUPERIOR - VERSIÓN MÓVIL
+========================================= */
+
+@media (max-width: 600px) {
+
+    .top-bar {
+        height: 48px;
+        padding: 0 15px;
+        font-size: 13px;
+    }
+
+    .top-bar-left {
+        gap: 8px;
+        white-space: nowrap;
+    }
+
+    .top-location {
+        min-width: auto;
+        font-size: 13px;
+    }
+
+    .top-separator {
+        font-size: 15px;
+    }
+
+    .top-bar-social {
+        gap: 9px;
+        margin-right: 0;
+    }
+
+    .top-bar-social .social-icon img {
+        width: 28px;
+        height: 28px;
+    }
+}
