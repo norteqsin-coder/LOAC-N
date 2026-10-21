@@ -2626,110 +2626,99 @@ header .btn-servicio:active {
     }
 
 }
-/* =========================================
-   BARRA SUPERIOR - VERSIÓN MÓVIL
-========================================= */
-
-@media (max-width: 600px) {
-
-    .top-bar {
-        height: 48px;
-        padding: 0 15px;
-        font-size: 13px;
-    }
-
-    .top-bar-left {
-        gap: 8px;
-        white-space: nowrap;
-    }
-
-    .top-location {
-        min-width: auto;
-        font-size: 13px;
-    }
-
-    .top-separator {
-        font-size: 15px;
-    }
-
-    .top-bar-social {
-        gap: 9px;
-        margin-right: 0;
-    }
-
-    .top-bar-social .social-icon img {
-        width: 28px;
-        height: 28px;
-    }
-}
 /* =====================================================
-   LOACON - CORRECCIÓN FINAL VERSIÓN MÓVIL
+   LOACON - BARRA SUPERIOR EN MÓVIL
    ===================================================== */
 
 @media (max-width: 900px) {
 
     .top-bar {
+        width: 100%;
         height: 42px;
         min-height: 42px;
-        width: 100%;
-        padding: 0 10px;
+
+        padding: 0 8px;
 
         display: flex;
         align-items: center;
         justify-content: space-between;
 
         box-sizing: border-box;
-    }
-
-    .top-bar-left {
-        width: auto;
-        flex: 1;
-
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-
         overflow: hidden;
     }
 
+    /* INFORMACIÓN IZQUIERDA */
+    .top-bar-left {
+        flex: 1;
+        min-width: 0;
+
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    /* UBICACIÓN */
     .top-location {
         min-width: 0;
 
-        font-size: 11px;
+        font-size: 9px;
 
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }
 
+    /* HORARIO Y TELÉFONO */
     .top-bar-left span:not(:first-child),
     .top-bar-left a {
-        display: none !important;
+        display: inline !important;
+
+        font-size: 8px;
+
+        white-space: nowrap;
+        flex-shrink: 0;
     }
 
+    /* SEPARADORES */
+    .top-separator {
+        font-size: 9px;
+        flex-shrink: 0;
+    }
+
+    /* REDES SOCIALES */
     .top-bar-social {
         display: flex !important;
 
         align-items: center;
+        gap: 4px;
 
-        gap: 8px;
-
-        margin-left: 8px;
+        margin-left: 5px;
         margin-right: 0;
 
         flex-shrink: 0;
     }
 
+    .top-bar-social .social-icon {
+        width: 21px !important;
+        height: 21px !important;
+    }
+
     .top-bar-social .social-icon img {
-        width: 25px;
-        height: 25px;
+        width: 21px !important;
+        height: 21px !important;
+
+        max-width: 21px !important;
+        max-height: 21px !important;
 
         display: block;
         object-fit: contain;
     }
 
     .top-bar-social .top-separator {
-        font-size: 15px;
+        font-size: 10px;
     }
 }
 
@@ -3136,4 +3125,3 @@ header .btn-servicio:active {
         box-sizing: border-box;
     }
 
-}
