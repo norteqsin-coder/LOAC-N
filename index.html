@@ -18,32 +18,97 @@
 
 <body>
 
-    <!-- HEADER -->
+    <!-- BARRA SUPERIOR -->
+    <div class="top-bar">
 
-    <header>
+        <!-- INFORMACIÓN IZQUIERDA -->
+        <div class="top-bar-left">
 
-        <div class="logo">
-        <img src="imagenes/logo-loacon.png" 
-            alt="LOACON Servicio Técnico en Línea Blanca">
-            
+            <span class="top-location" id="topLocation">
+                📍 CDMX y Zona Metropolitana
+            </span>
+
+            <span class="top-separator">|</span>
+
+            <span>
+                🕒 Lunes a Sábado 9:00 - 19:00
+            </span>
+
+            <span class="top-separator">|</span>
+
+            <a href="tel:+525539432496">
+                ☎ 55 3943 2496
+            </a>
+
+        </div>
+
+
+        <!-- REDES SOCIALES DERECHA -->
+        <div class="top-bar-social">
+
+            <a
+                href="TU_LINK_DE_FACEBOOK"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                class="social-icon"
+            >
+                <img src="imagenes/redes/facebook.svg" alt="Facebook">
+            </a>
+
+            <a
+                href="TU_LINK_DE_TIKTOK"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok"
+                class="social-icon"
+            >
+                <img src="imagenes/redes/tiktok.svg" alt="TikTok">
+            </a>
+
+            <span class="top-separator">|</span>
+
+            <a
+                href="https://wa.me/525538827062"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                class="social-icon"
+            >
+                <img src="imagenes/redes/whatsapp.svg" alt="WhatsApp">
+            </a>
+
+        </div>
+
     </div>
 
-        <nav>
-            <a href="#inicio">Inicio</a>
-            <a href="#servicios">Servicios</a>
-            <a href="#nosotros">Nosotros</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
 
-        <a
-            href="https://wa.me/525538827062?text=Hola%2C%20me%20interesa%20solicitar%20un%20servicio%20para%20un%20electrodom%C3%A9stico.%20%C2%BFPodr%C3%ADan%20brindarme%20informaci%C3%B3n%3F"
-            target="_blank"
-            class="btn-servicio"
+<!-- HEADER PRINCIPAL -->
+<header>
+
+    <div class="logo">
+        <img
+            src="imagenes/logo-loacon.png"
+            alt="LOACON Servicio Técnico en Línea Blanca"
         >
-            Solicitar servicio
-        </a>
+    </div>
 
-    </header>
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <a
+        href="https://wa.me/525538827062?text=Hola%2C%20me%20interesa%20solicitar%20un%20servicio%20para%20un%20electrodom%C3%A9stico.%20%C2%BFPodr%C3%ADan%20brindarme%20informaci%C3%B3n%3F"
+        target="_blank"
+        class="btn-servicio"
+    >
+        Solicitar servicio
+    </a>
+
+</header>
 
 
     <!-- HERO -->
@@ -381,7 +446,44 @@
         </p>
 
     </footer>
-    <script src="script.js"></script>
+   <script src="script.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const topLocation = document.getElementById("topLocation");
+
+    if (!topLocation) return;
+
+    const locationMessages = [
+        "📍 CDMX y Zona Metropolitana",
+        "📍 Servicio a domicilio en CDMX",
+        "📍 Atendemos CDMX y Zona Metropolitana"
+    ];
+
+    let locationIndex = 0;
+
+    setInterval(function () {
+
+        topLocation.classList.add("fade-out");
+
+        setTimeout(function () {
+
+            locationIndex++;
+
+            if (locationIndex >= locationMessages.length) {
+                locationIndex = 0;
+            }
+
+            topLocation.textContent = locationMessages[locationIndex];
+
+            topLocation.classList.remove("fade-out");
+
+        }, 500);
+
+    }, 5000);
+
+});
+</script>
 
 </body>
-</html>

@@ -4,7 +4,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =========================
+        /* =========================
        IMÁGENES CON FALLBACK
     ========================= */
 
@@ -349,6 +349,42 @@ botonesServicios.forEach(boton => {
 
 mostrarServicio("refrigeradores");
 
+/* =====================================================
+   BARRA SUPERIOR DINÁMICA
+===================================================== */
+
+const topLocation = document.getElementById("topLocation");
+
+if (topLocation) {
+
+    const locationMessages = [
+        "📍 CDMX y Zona Metropolitana",
+        "📍 Servicio a domicilio",
+        "📍 Atendemos CDMX y Zona Metropolitana"
+    ];
+
+    let locationIndex = 0;
+
+    setInterval(() => {
+
+        topLocation.classList.add("fade-out");
+
+        setTimeout(() => {
+
+            locationIndex++;
+
+            if (locationIndex >= locationMessages.length) {
+                locationIndex = 0;
+            }
+
+            topLocation.textContent = locationMessages[locationIndex];
+
+            topLocation.classList.remove("fade-out");
+
+        }, 500);
+
+    }, 5000);
+}
 
 /* =====================================================
    CIERRE DOMContentLoaded

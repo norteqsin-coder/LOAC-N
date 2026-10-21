@@ -2431,3 +2431,198 @@ header .btn-servicio:active {
 
     display: block;
 }
+/* =====================================================
+   BARRA SUPERIOR LOACON
+   ===================================================== */
+
+.top-bar {
+    width: 100%;
+    height: 44px;
+
+    background: #123b63;
+    color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+    box-sizing: border-box;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+
+    position: relative;
+    z-index: 100;
+}
+
+
+/* =========================================
+   INFORMACIÓN IZQUIERDA
+   ========================================= */
+
+.top-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.top-bar-left span,
+.top-bar-left a {
+    color: #ffffff;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.top-bar-left a:hover {
+    text-decoration: underline;
+}
+.top-location {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+
+    display: inline-block;
+    min-width: 235px;
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+}
+
+.top-location.fade-out {
+    opacity: 0;
+    transform: translateY(-4px);
+}
+/* =========================================
+   SEPARADORES
+   ========================================= */
+
+.top-separator {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+
+/* =========================================
+   REDES SOCIALES
+   ========================================= */
+
+.top-bar-social {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-right: 8%;
+}
+
+.top-bar-social .social-icon img {
+    width: 39px;
+    height: 39px;
+    display: block;
+    object-fit: contain;
+}
+
+.top-separator {
+    font-size: 19px;
+}
+
+/* FACEBOOK / INSTAGRAM / TIKTOK */
+
+.social-facebook,
+.social-instagram,
+.social-tiktok {
+    width: 39px;
+    height: 39px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+
+    transition: transform 0.3s ease;
+}
+
+
+/* =========================================
+   ICONOS REALES DE REDES SOCIALES
+   ========================================= */
+
+.social-icon {
+    width: 39px !important;
+    height: 39px !important;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+    flex-shrink: 0;
+
+    transition: transform 0.25s ease;
+}
+
+.social-icon img {
+    width: 39px !important;
+    height: 39px !important;
+
+    max-width: 39px !important;
+    max-height: 39px !important;
+
+    min-width: 0 !important;
+    min-height: 0 !important;
+
+    display: block !important;
+    object-fit: contain;
+}
+
+.social-icon:hover {
+    transform: scale(1.12);
+}
+/* =========================================
+   CORRECCIÓN DEL LOGO
+   ========================================= */
+
+.logo img {
+    transform: none;
+}
+
+
+/* =========================================
+   CELULAR
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .top-bar {
+        height: 34px;
+        min-height: 34px;
+
+        padding: 0 10px;
+
+        justify-content: center;
+    }
+
+    .top-bar-left {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .top-bar-left span:first-child {
+        font-size: 10px;
+    }
+
+    .top-bar-left span:not(:first-child),
+    .top-bar-left a {
+        display: none;
+    }
+
+    .top-bar-social {
+        display: none;
+    }
+
+}
